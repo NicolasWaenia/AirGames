@@ -1,0 +1,21 @@
+<h1>Dashboard</h1>
+
+<h2>My games</h2>
+<% @games.each do |game| %>
+  <div class="card-product">
+    <img src="#" />
+    <div class="card-product-infos">
+      <h2><%= game.name %></h2>
+      <p>de <%= game.number_of_players_min %> à <%= game.number_of_players_max %> joueurs</p>
+    </div>
+  </div>
+<% end %>
+
+<h2>My bookings</h2>
+<% @bookings.each do |booking| %>
+  <p>booking.game</p>
+  <p>booking.user.first_name</p>
+  <p>booking.user.last_name</p>
+  <p>booking.start_at</p>
+  <p>booking.end_at</p>
+<% end %>
