@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_20_113349) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_20_143807) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -30,7 +30,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_20_113349) do
     t.string "name"
     t.integer "number_of_players_min"
     t.integer "number_of_players_max"
-    t.string "type"
+    t.string "category"
     t.float "price"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
