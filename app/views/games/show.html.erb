@@ -5,4 +5,8 @@ Name: <%= @game.name %><br>
 Price: <%= @game.price %>$<br>
 Category: <%= @game.category %><br>
 Minimum Players: <%= @game.number_of_players_min %><br>
-Maximum Players: <%= @game.number_of_players_max %>
+Maximum Players: <%= @game.number_of_players_max %><br>
+
+<%= link_to "Edit this game", edit_game_path %>
+<%= link_to "Delete this game", game_path(@game), data: { turbo_method: :delete, turbo_confirm: "Are your sure?" } %>
+<%= link_to "Back to home", games_path %>
