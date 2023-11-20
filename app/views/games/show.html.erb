@@ -1,2 +1,8 @@
 <h1>Games#show</h1>
 <p>Find me in app/views/games/show.html.erb</p>
+
+Name: <%= @game.name %><br>
+Price: <%= @game.price %>$<br>
+Category: <%= @game.category %><br>
+Minimum Players: <%= @game.number_of_players_min %><br>
+Maximum Players: <%= @game.number_of_players_max %>

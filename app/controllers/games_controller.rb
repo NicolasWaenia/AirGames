@@ -13,8 +13,9 @@ class GamesController < ApplicationController
 
   def create
     @game = Game.new(game_params)
+    @game.user = current_user
     if @game.save
-      redirect_to game_path
+      redirect_to game_path(@game)
     else
       render :new, status: :unprocessable_entity
     end
@@ -39,6 +40,6 @@ class GamesController < ApplicationController
   private
 
   def game_params
-    params.require(:game).permit(:name, :number_of_players_min, :number_of_players_max, :category, :price)
+    params.require(:game).permit(:name, :number_of_players_min, :number_of_players_max, :category, :price, :user_id)
   end
 end
