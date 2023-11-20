@@ -6,3 +6,17 @@ Price: <%= @game.price %>$<br>
 Category: <%= @game.category %><br>
 Minimum Players: <%= @game.number_of_players_min %><br>
 Maximum Players: <%= @game.number_of_players_max %>
+
+<% if @game.user === current_user %>
+  <% @game.bookings.each do |booking| %>
+    <p><%= booking.user.first_name %> <%= booking.user.last_name %></p>
+    <p><%= booking.start_at %></p>
+    <p><%= booking.end_at %></p>
+  <% end %>
+<% else %>
+  <%= simple_form_for [@game, @booking] do |f| %>
+    <%= f.input :start_at %>
+    <%= f.input :end_at %>
+    <%= f.submit %>
+  <% end %>
+<% end %>
