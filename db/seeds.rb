@@ -7,3 +7,15 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+bgg_service = BoardgameGeekService.new
+    results = bgg_service.search(query)
+
+    results.each do |item|
+      create(
+        name: item['name']['value'],
+        description: item['description']['value'],
+        year_published: item['yearpublished']['value']
+        # Ajoutez d'autres attributs en fonction de ce que vous souhaitez stocker
+      )
+    end
