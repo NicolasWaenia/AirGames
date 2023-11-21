@@ -1,11 +1,13 @@
 class GamesController < ApplicationController
-  skip_before_action :authenticate_user!, only: ["index", "show"]
+  skip_before_action :authenticate_user!, only: [:index, :show]
+
   def index
     @games = Game.all
   end
 
   def show
     @game = Game.find(params[:id])
+    @booking = Booking.new
   end
 
   def new
@@ -29,8 +31,11 @@ class GamesController < ApplicationController
 
   def update
     @game = Game.find(params[:id])
-    @game.update(game_params)
-    redirect_to game_path(@game)
+    if @game.update(game_params)
+      redirect_to game_path(@game)
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy
