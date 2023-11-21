@@ -20,6 +20,20 @@ class BookingsController < ApplicationController
     end
   end
 
+  def accept
+    @booking = Booking.find(params[:id])
+    @booking.status = "accepted"
+    @booking.save
+    redirect_to game_path(@booking.game)
+  end
+
+  def refuse
+    @booking = Booking.find(params[:id])
+    @booking.status = "refused"
+    @booking.save
+    redirect_to game_path(@booking.game)
+  end
+
   private
 
   def booking_params
