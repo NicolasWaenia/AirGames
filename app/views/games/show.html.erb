@@ -2,11 +2,11 @@
 <div class="game-description">
   <div class="photo">
   <% if @game.photo.attached? %>
-<%= cl_image_tag @game.photo.key, height: 250, width: 250, crop: :fill %>
+<%= cl_image_tag @game.photo.key,  crop: :fill, class: "img-fluid" %>
 <% end %><br>
   </div>
   <div class="description">
-  <span id= "title">🃏 <%=  @game.name.upcase %> | <%= @game.user.first_name %> à {faire la migration pour récup une ville 😊} </span><br>
+  <span id= "title">🃏 <%=  @game.name.upcase %> | <%= @game.user.first_name %> à <%= @game.user.city %> </span><br>
   Description: <%= @game.description %><br>
 <%= @game.price %>€ per day<br>
 Category: <%= @game.category %><br>
@@ -20,8 +20,6 @@ Maximum Players: <%= @game.number_of_players_max %><br>
 <%# ici, la réservation //Jennifer 👩 %>
 
 </div>
-
-
 
 
 <% if @game.user === current_user %>
@@ -45,3 +43,22 @@ Maximum Players: <%= @game.number_of_players_max %><br>
 
 <%= link_to "Delete this game", game_path(@game), data: { turbo_method: :delete, turbo_confirm: "Are your sure?" } %>
 <%= link_to "Back to home", games_path %>
+<br>
+----------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 text-center">
+      <h1><%= @game.name.upcase %></h1>
+      <% if @game.photo.attached? %>
+        <%= cl_image_tag @game.photo.key, class: "img-fluid" %>
+      <% end %>
+    </div>
+    <div class="col-md-6 d-flex align-items-center">
+      <div class="description text-center">
+        <strong>Description:</strong> <%= content_tag(:p, @game.description, class: "fs-4") %>
+      </div>
+    </div>
+  </div>
+</div>
