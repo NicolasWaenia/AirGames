@@ -1,4 +1,4 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon mb-5">
   <div class="container-fluid">
     <%= link_to games_path, class: "navbar-brand" do %>
         <%= image_tag "https://cdn-icons-png.flaticon.com/512/497/497145.png", class: "img-fluid", alt: "Logo" %>
@@ -21,7 +21,6 @@
           <li class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <%= image_tag "https://cdn-icons-png.flaticon.com/512/1752/1752751.png", class: "avatar", alt: "Profile" %>
-              <%# Il faudra changer la photo par une photo heberger dans le formulaire d'inscription %>
             </a>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Log out", destroy_user_session_path, data: { turbo_method: :delete }, class: "dropdown-item" %>
