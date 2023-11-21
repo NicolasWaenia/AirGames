@@ -22,8 +22,6 @@ Maximum Players: <%= @game.number_of_players_max %><br>
 </div>
 
 
-
-
 <% if @game.user === current_user %>
   <% @game.bookings.each do |booking| %>
     <p><%= booking.user.first_name %> <%= booking.user.last_name %></p>
@@ -45,3 +43,12 @@ Maximum Players: <%= @game.number_of_players_max %><br>
 
 <%= link_to "Delete this game", game_path(@game), data: { turbo_method: :delete, turbo_confirm: "Are your sure?" } %>
 <%= link_to "Back to home", games_path %>
+
+
+<%# Reviews %>
+<div class="reviews">
+  <%= simple_form_for [@game, @review] do |f| %>
+    <%= f.input :comment %>
+    <%= f.input :rating %>
+  <% end %>
+</div>
