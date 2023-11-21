@@ -1,17 +1,28 @@
-<h1>Games#show</h1>
-<p>Find me in app/views/games/show.html.erb</p>
-
 <!-- app/views/articles/_form.html.erb -->
-
+<div class="game-description">
+  <div class="photo">
+  <% if @game.photo.attached? %>
 <%= cl_image_tag @game.photo.key, height: 300, width: 400, crop: :fill %>
-
-
-Name: <%= @game.name %><br>
-Description: <%= @game.description %>$<br>
-Price: <%= @game.price %>$<br>
+<% end %><br>
+  </div>
+  <div class="description">
+  <span id= "title">🃏 <%=  @game.name %> | <%= @game.user.first_name %> à {faire la migration pour récup une ville 😊} </span><br>
+  Description: <%= @game.description %><br>
+<%= @game.price %>€ per day<br>
 Category: <%= @game.category %><br>
 Minimum Players: <%= @game.number_of_players_min %><br>
-Maximum Players: <%= @game.number_of_players_max %>
+Maximum Players: <%= @game.number_of_players_max %><br>
+<% if @game.user === current_user %>
+<%= link_to "Edit my game", edit_game_path, class: "btn btn-primary" %>
+<% end %>
+  </div>
+
+<%# ici, la réservation //Jennifer 👩 %>
+
+</div>
+
+
+
 
 <% if @game.user === current_user %>
   <% @game.bookings.each do |booking| %>
@@ -27,6 +38,5 @@ Maximum Players: <%= @game.number_of_players_max %>
   <% end %>
 <% end %>
 
-<%= link_to "Edit this game", edit_game_path %>
 <%= link_to "Delete this game", game_path(@game), data: { turbo_method: :delete, turbo_confirm: "Are your sure?" } %>
 <%= link_to "Back to home", games_path %>
