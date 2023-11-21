@@ -17,7 +17,9 @@ Rails.application.routes.draw do
   # root "posts#index"
   resources :games do
     resources :bookings, only: [:create]
+    resources :reviews, only: [:create]
   end
+
   get "my_games", to: "games#my_index"
   get "my_bookings", to: "bookings#my_index"
   patch "bookings/:id/accept", to: "bookings#accept", as: "booking_accept"

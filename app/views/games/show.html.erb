@@ -49,22 +49,15 @@ Maximum Players: <%= @game.number_of_players_max %><br>
 
 <%= link_to "Delete this game", game_path(@game), data: { turbo_method: :delete, turbo_confirm: "Are your sure?" } %>
 <%= link_to "Back to home", games_path %>
-<br>
-----------------------------------------------------------------------------------------------------------------
-----------------------------------------------------------------------------------------------------------------
---------------------------------------------------------------------------------------------
-<div class="container">
-  <div class="row">
-    <div class="col-md-6 text-center">
-      <h1><%= @game.name.upcase %></h1>
-      <% if @game.photo.attached? %>
-        <%= cl_image_tag @game.photo.key, class: "img-fluid" %>
-      <% end %>
-    </div>
-    <div class="col-md-6 d-flex align-items-center">
-      <div class="description text-center">
-        <strong>Description:</strong> <%= content_tag(:p, @game.description, class: "fs-4") %>
-      </div>
-    </div>
-  </div>
+
+
+
+<%# Reviews %>
+<div class="reviews">
+  <%= simple_form_for [@game, @review] do |f| %>
+    <%= f.input :comment %>
+    <%= f.input :rating %>
+  <% end %>
+
+
 </div>
