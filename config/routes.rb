@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   root to: "games#index"
   # Defines the root path route ("/")
   # root "posts#index"
-  resources :games
+  resources :games do
+    resources :bookings, only: [:create]
+  end
   get "dashboard", to: "dashboard#index"
 end
