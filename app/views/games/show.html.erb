@@ -2,11 +2,12 @@
 <p>Find me in app/views/games/show.html.erb</p>
 
 <!-- app/views/articles/_form.html.erb -->
+<%= @game.name.upcase %><br>
 <% if @game.photo.attached? %>
-<%= cl_image_tag @game.photo.key, height: 300, width: 400, crop: :fill %>
+<%= cl_image_tag @game.photo.key, height: 50, width: 50, crop: :fill %>
 <% end %>
 
-Name: <%= @game.name %><br>
+
 Description: <%= @game.description %><br>
 Price: <%= @game.price %>€<br>
 Category: <%= @game.category %><br>
@@ -30,7 +31,7 @@ Maximum Players: <%= @game.number_of_players_max %>
     <%= f.submit %>
   <% end %>
 <% end %>
-
+<br>
 <%= link_to "Edit this game", edit_game_path %>
 <%= link_to "Delete this game", game_path(@game), data: { turbo_method: :delete, turbo_confirm: "Are your sure?" } %>
 <%= link_to "Back to home", games_path %>
