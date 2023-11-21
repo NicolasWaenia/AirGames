@@ -1,8 +1,8 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
-    <%= link_to "#", class: "navbar-brand" do %>
+    <%= link_to games_path, class: "navbar-brand" do %>
       <%= image_tag "https://cdn-icons-png.flaticon.com/512/497/497145.png", class: "img-fluid", alt: "Logo" %>
-      <%# Il faudra changer la photo par une photo heberger dans le formulaire d'inscription %>
+      AirGames
     <% end %>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -21,6 +21,7 @@
           <li class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <%= image_tag "https://cdn-icons-png.flaticon.com/512/1752/1752751.png", class: "avatar", alt: "Profile" %>
+            <%# Il faudra changer la photo par une photo heberger dans le formulaire d'inscription %>
             </a>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "", "#", class: "dropdown-item my-custom-margin" %>

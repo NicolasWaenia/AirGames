@@ -20,3 +20,7 @@ Maximum Players: <%= @game.number_of_players_max %>
     <%= f.submit %>
   <% end %>
 <% end %>
+
+<%= link_to "Edit this game", edit_game_path %>
+<%= link_to "Delete this game", game_path(@game), data: { turbo_method: :delete, turbo_confirm: "Are your sure?" } %>
+<%= link_to "Back to home", games_path %>
