@@ -16,6 +16,8 @@
   height: 200px;
   width: 100%;
   object-fit: cover;
+  border-top: 1px solid #ddd; /* Bordure en haut du conteneur */
+  margin-bottom: 10px; /* Espacement en dessous de la bordure */
 }
 
 .card-trip h2 {
