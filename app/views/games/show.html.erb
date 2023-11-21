@@ -25,10 +25,16 @@ Maximum Players: <%= @game.number_of_players_max %><br>
 
 
 <% if @game.user === current_user %>
-  <% @game.bookings.each do |booking| %>
-    <p><%= booking.user.first_name %> <%= booking.user.last_name %></p>
-    <p><%= booking.start_at %></p>
-    <p><%= booking.end_at %></p>
+  <% bookings = @game.bookings.where(status: ["pending", "accepted"]).where("start_at >= ?", Time.now.midnight) %>
+  <% bookings.each do |booking| %>
+    <div class="card-product">
+      <% if booking.status === "pending" %>
+        <%= link_to "Accept", booking_accept_path(booking), data: { turbo_method: :patch } %>
+        <%= link_to "Refuse", booking_refuse_path(booking), data: { turbo_method: :patch } %>
+      <% end %>
+      <h2>From <%= booking.start_at.strftime("%d/%m/%Y")  %> to <%= booking.end_at.strftime("%d/%m/%Y")  %></h2>
+      <p><%= booking.user.email %></p>
+    </div>
   <% end %>
 <% else %>
   <%= simple_form_for [@game, @booking] do |f| %>

@@ -9,3 +9,6 @@ export default class extends Controller {
 
 flatpickr(this.element)
 
+  }
+
+}
