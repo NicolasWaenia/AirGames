@@ -5,6 +5,14 @@ class GamesController < ApplicationController
     @games = Game.all
   end
 
+  def my_index
+    if current_user
+      @games = current_user.games
+    else
+      redirect_to root_path, alert: 'You need to be logged in to view your games.'
+    end
+  end
+
   def show
     @game = Game.find(params[:id])
     @booking = Booking.new
