@@ -1,17 +1,24 @@
-<div class="card-container">
-  <% @games.each do |game| %>
-    <%= link_to(game_path(game), class: "card-trip") do %>
-      <div class="card-trip">
-        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
-        <div class="card-trip-infos">
-          <div>
-            <h2><%= game.name %></h2>
-            <p class="detail">Category: <%= game.category %></p>
-            <p class="detail"> <%= "From #{game.number_of_players_min} to #{game.number_of_players_max}" %> Players</p>
+<div class="container">
+  <div class="row">
+    <% @games.each do |game| %>
+      <div class="col-md-3 mb-4">
+        <%= link_to(game_path(game), class: "card-trip") do %>
+          <div class="card-trip">
+            <% if game.photo.attached? %>
+              <%= cl_image_tag game.photo.key, class: "card-image mt-2 img-fluid", crop: :fill %>
+            <% end %>
+
+            <div class="card-trip-infos border-top pt-3">
+              <div>
+                <h2><%= game.name %></h2>
+                <p class="detail">Category: <%= game.category %></p>
+                <p class="detail"> <%= "From #{game.number_of_players_min} to #{game.number_of_players_max}" %> Players</p>
+              </div>
+              <h2 class="card-trip-pricing text-right"><%= game.price %>€</h2>
+            </div>
           </div>
-          <h2 class="card-trip-pricing"><%= game.price %>€</h2>
-        </div>
+        <% end %>
       </div>
     <% end %>
-  <% end %>
+  </div>
 </div>
