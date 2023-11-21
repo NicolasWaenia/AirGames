@@ -2,9 +2,9 @@
 <p>Find me in app/views/games/show.html.erb</p>
 
 <!-- app/views/articles/_form.html.erb -->
-
+<% if @game.photo.attached? %>
 <%= cl_image_tag @game.photo.key, height: 300, width: 400, crop: :fill %>
-
+<% end %>
 
 Name: <%= @game.name %><br>
 Description: <%= @game.description %>$<br>
