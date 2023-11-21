@@ -20,7 +20,8 @@ Rails.application.routes.draw do
     resources :reviews, only: [:create]
   end
 
-  get "dashboard", to: "dashboard#index"
   get "my_games", to: "games#my_index"
   get "my_bookings", to: "bookings#my_index"
+  patch "bookings/:id/accept", to: "bookings#accept", as: "booking_accept"
+  patch "bookings/:id/refuse", to: "bookings#refuse", as: "booking_refuse"
 end
