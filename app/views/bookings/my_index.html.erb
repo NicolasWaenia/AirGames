@@ -1,0 +1,15 @@
+<h2>My bookings</h2>
+<% @bookings.each do |booking| %>
+  <%= link_to game_path(booking.game) do  %>
+    <div class="card-product">
+      <img src="#" />
+      <div class="card-product-infos">
+        <h2><%= booking.game.name %></h2>
+        <h3>de <%= booking.game.category %></p>
+        <p>de <%= booking.game.price %></p>
+        <p>Du <%= booking.start_at %> à <%= booking.end_at %></p>
+        <p>Status : <%= booking.status %></p>
+      </div>
+    </div>
+  <% end %>
+<% end %>

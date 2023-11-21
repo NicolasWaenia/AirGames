@@ -19,4 +19,6 @@ Rails.application.routes.draw do
     resources :bookings, only: [:create]
   end
   get "dashboard", to: "dashboard#index"
+  get "my_games", to: "games#my_index"
+  get "my_bookings", to: "bookings#my_index"
 end
