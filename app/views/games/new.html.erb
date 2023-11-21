@@ -1,9 +1,11 @@
 <%= simple_form_for @game do |f| %>
   <%= f.input :name %>
+  <%= f.input :description %>
   <%= f.input :number_of_players_min , collection: (1..6)  %>
   <%= f.input :number_of_players_max , collection: (1..16)%>
   <%= f.input :category, collection: ["Card Game", "Adventure", "Farming", "Music", "Party Game", "Science Fiction", "Negotiation", "Children's Game", "Action/Dexterity", "Bluffing", "Murder/Mystery"] %>
   <%= f.input :price %>
+  <%= f.input :photo, as: :file %>
   <%= f.submit %>
 <% end %>
 
