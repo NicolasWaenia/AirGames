@@ -1,7 +1,13 @@
 <h1>Games#show</h1>
 <p>Find me in app/views/games/show.html.erb</p>
 
+<!-- app/views/articles/_form.html.erb -->
+
+<%= cl_image_tag @game.photo.key, height: 300, width: 400, crop: :fill %>
+
+
 Name: <%= @game.name %><br>
+Description: <%= @game.description %>$<br>
 Price: <%= @game.price %>$<br>
 Category: <%= @game.category %><br>
 Minimum Players: <%= @game.number_of_players_min %><br>

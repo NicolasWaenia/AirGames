@@ -1,5 +1,7 @@
 class Game < ApplicationRecord
   belongs_to :user
+  has_one_attached :photo
+  # has_many_attached :photos
 
   validates :number_of_players_min, inclusion: { in: 1..6 }
   validates :number_of_players_max, inclusion: { in: 1..16 }
