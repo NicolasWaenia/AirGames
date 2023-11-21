@@ -6,17 +6,16 @@
 }
 
 .card-trip {
-  overflow: hidden;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   text-decoration: none;
+  border-radius: 6px;
 }
 
 .card-trip > img {
   height: 200px;
   width: 100%;
-  object-fit: cover;
-  border-top: 1px solid #ddd; /* Bordure en haut du conteneur */
+  object-fit: scale-down;
   margin-bottom: 10px; /* Espacement en dessous de la bordure */
 }
 
@@ -41,6 +40,8 @@
   justify-content: space-between;
   align-items: flex-end;
   position: relative;
+  background-color: #F9EFEF
+
 }
 
 .card-trip-infos a {
