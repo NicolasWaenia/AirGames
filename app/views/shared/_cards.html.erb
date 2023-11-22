@@ -11,6 +11,12 @@
             <% end %>
 
             <div class="card-trip-infos border-top pt-3">
+              <% if game.user === current_user %>
+                <% bookings_count = game.bookings.where(status: "pending").where("start_at >= ?", Time.now.midnight).count %>
+                <% if bookings_count >0 %>
+                  <span class="booking-infos"><%= pluralize(bookings_count, 'pending booking') %></span>
+                <% end %>
+              <% end %>
               <div>
                 <h2><%= game.name %></h2>
                 <p class="detail">Category: <%= game.category %></p>
