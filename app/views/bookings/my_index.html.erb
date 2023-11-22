@@ -10,10 +10,8 @@
         <h2><%= booking.game.name %></h2>
         <h3><%= booking.game.category %></h3>
         <p><%= booking.game.price %></p>
-        <div class="booking-details">
-          <p><strong>Time:</strong> <%= "#{booking.start_at} à #{booking.end_at}" %></p>
-          <p><strong>Status:</strong> <%= booking.status %></p>
-        </div>
+        <p>Booking from <%= booking.start_at.strftime("%d/%m/%Y")  %> to <%= booking.end_at.strftime("%d/%m/%Y") %></p>
+        <p>Status : <%= booking.status %></p>
       </div>
     </div>
   <% end %>

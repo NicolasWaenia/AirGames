@@ -1,3 +1,5 @@
+// F1EAFF
+
 .game-description{
   // border: 1px solid red;
   background-color: white;
@@ -5,26 +7,90 @@
   flex-direction:row;
   padding: 10px;
   border-radius: 4px;
-
 }
 
 #title{
-  font-size: 16px;
+  color: black;
+  font-size: 26px;
   font-weight: bold;
+  padding: 15px 0;
+  margin: 3; /* Pour enlever les marges par défaut du titre */
 }
 
 .photo img{
   border-radius: 4px;
-  padding: 10px;
+  padding: 20px;
   // border: 1px solid green;
-  max-width: 250 px;
-  max-height: 250px;
+  max-width: 450 px;
+  max-height: 450px;
   object-fit: cover;
   justify-content: center;
 }
 
-.description{
-  padding: 10px;
+.details{
+  padding: 20px;
   // border: 1px solid blue;
-  font-size: 14px;
+  font-size: 20px;
+  color: grey;
+  /* Optionnel : pour espacer un peu le texte du trait */
+  padding: 15px;
+  line-height: 3
+}
+
+.details-text{
+  border-bottom: 1px solid #efefef; /* Trait en dessous du titre */
+  border-top: 1px solid #efefef; /* Trait au-dessus du titre */
+}
+
+.btns{
+  padding: 10px;
+}
+
+.edit-btn{
+  background-color: #deceff;
+  color: white;
+  padding: 4px 10px 4px 10px;
+  font-size: 20px;
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+.delete-btn{
+  background-color: #deceff;
+  color: white;
+  padding: 4px 10px 4px 10px;
+  font-size: 20px;
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+
+#back-btn{
+  color: #deceff;
+  font-size: 20px;
+  text-decoration: none;
+  margin-bottom: 25px;
+}
+
+
+.description-text{
+  background-color: white;
+  padding: 10px;
+  border-radius: 4px;
+  padding-left: 50px;
+
+}
+#description-title{
+  color: #000000;
+  margin-bottom: 20px;
+  font-size: 22px;
+}
+#diamond{
+  color: #dac8ff;
+  line-height: 1.5;
+}
+#text{
+  padding-left: 50px;
+  font-size: 20px;
+  padding-top: 20px;
 }

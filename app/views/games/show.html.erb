@@ -1,38 +1,16 @@
 <!-- app/views/articles/_form.html.erb -->
-<div class="game-description">
-  <div class="photo">
-  <% if @game.photo.attached? %>
-<%= cl_image_tag @game.photo.key,  crop: :fill, class: "img-fluid" %>
-<% end %><br>
-  </div>
-  <div class="description">
-  <span id= "title">🃏 <%=  @game.name.upcase %> | <%= @game.user.first_name %> à <%= @game.user.city %> </span><br>
-  Description: <%= @game.description %><br>
-<%= @game.price %>€ per day<br>
-Category: <%= @game.category %><br>
-Minimum Players: <%= @game.number_of_players_min %><br>
-Maximum Players: <%= @game.number_of_players_max %><br>
-<% if @game.user === current_user %>
-<%= link_to "Edit my game", edit_game_path, class: "btn btn-primary" %>
+<%= link_to games_path do %>
+  <i id="back-btn" class="fa-solid fa-circle-chevron-left"></i>
 <% end %>
-  </div>
+
+<%= render "shared/game_description_show" %>
 
 <%# ici, la réservation //Jennifer 👩 %>
 
-</div>
-
-
 <% if @game.user === current_user %>
-  <% bookings = @game.bookings.where(status: ["pending", "accepted"]).where("start_at >= ?", Time.now.midnight) %>
+  <% bookings = @game.bookings.where(status: ["pending", "accepted"]).where("start_at >= ?", Time.now.midnight).order(:created_at) %>
   <% bookings.each do |booking| %>
-    <div class="card-product">
-      <% if booking.status === "pending" %>
-        <%= link_to "Accept", booking_accept_path(booking), data: { turbo_method: :patch } %>
-        <%= link_to "Refuse", booking_refuse_path(booking), data: { turbo_method: :patch } %>
-      <% end %>
-      <h2>From <%= booking.start_at.strftime("%d/%m/%Y")  %> to <%= booking.end_at.strftime("%d/%m/%Y")  %></h2>
-      <p><%= booking.user.email %></p>
-    </div>
+    <%= render "shared/bookings", booking: booking %>
   <% end %>
 <% else %>
   <%= simple_form_for [@game, @booking] do |f| %>
@@ -47,17 +25,5 @@ Maximum Players: <%= @game.number_of_players_max %><br>
 <% end %>
 
 
-<%= link_to "Delete this game", game_path(@game), data: { turbo_method: :delete, turbo_confirm: "Are your sure?" } %>
-<%= link_to "Back to home", games_path %>
-
-
-
 <%# Reviews %>
-<div class="reviews">
-  <%= simple_form_for [@game, @review] do |f| %>
-    <%= f.input :comment %>
-    <%= f.input :rating %>
-  <% end %>
-
-
-</div>
+<%# <%= render "shared/card_show" %>
