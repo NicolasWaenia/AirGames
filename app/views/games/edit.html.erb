@@ -1,5 +1,6 @@
-<h1>Games#edit</h1>
-<p>Find me in app/views/games/edit.html.erb</p>
+<%= link_to games_path do %>
+  <i id="back-btn" class="fa-solid fa-circle-chevron-left"></i>
+<% end %>
 
 <%= simple_form_for @game do |f| %>
   <%= f.input :name %>

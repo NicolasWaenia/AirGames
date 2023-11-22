@@ -1,12 +1,13 @@
-<%= simple_form_for @game do |f| %>
-  <%= f.input :name %>
-  <%= f.input :description %>
-  <%= f.input :number_of_players_min , collection: (1..6)  %>
-  <%= f.input :number_of_players_max , collection: (1..16)%>
-  <%= f.input :category, collection: ["Card Game", "Adventure", "Farming", "Music", "Party Game", "Science Fiction", "Negotiation", "Children's Game", "Action/Dexterity", "Bluffing", "Murder/Mystery"] %>
-  <%= f.input :price %>
-  <%= f.input :photo, as: :file %>
-  <%= f.submit %>
+<%= link_to games_path do %>
+  <i id="back-btn" class="fa-solid fa-circle-chevron-left"></i>
 <% end %>
 
-<%= link_to "Back to home", games_path %>
+<%= simple_form_for @game do |f| %>
+  <%= f.input :name,  { class: "form-field" } %>
+  <%= f.input :description , input_html: { rows: 8 }%>
+  <%= f.input :number_of_players_min , collection: (1..6), label: 1 %>
+  <%= f.input :number_of_players_max , collection: (1..16)%>
+  <%= f.input :category, collection: ["Card Game", "Adventure", "Farming", "Music", "Party Game", "Science Fiction", "Negotiation", "Children's Game", "Action/Dexterity", "Bluffing", "Murder/Mystery"], label: "Card Game" %>
+  <%= f.input :photo, as: :file, label: "Add a picture 📷" %>
+  <%= f.submit %>
+<% end %>
