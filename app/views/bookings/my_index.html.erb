@@ -1,25 +1,19 @@
-<style>
-  .card-product {
-    margin-bottom: 10px;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 10px;
-  }
-</style>
-
-<h2>My bookings</h2>
+<h2>My Bookings</h2>
 
 <% @bookings.each do |booking| %>
   <%= link_to game_path(booking.game) do  %>
     <div class="card-product">
       <% if booking.game.photo.attached? %>
-        <img src="<%= cl_image_path(booking.game.photo.key, crop: :fill, height: 100) %>" />
+        <img src="<%= cl_image_path(booking.game.photo.key, crop: :fill, height: 100) %>" alt="Game Image" />
       <% end %>
       <div class="card-product-infos">
         <h2><%= booking.game.name %></h2>
-        <h3><%= booking.game.category %></p>
+        <h3><%= booking.game.category %></h3>
         <p><%= booking.game.price %></p>
-        <p><%= booking.start_at %> à <%= booking.end_at %></p>
-        <p>Status : <%= booking.status %></p>
+        <div class="booking-details">
+          <p><strong>Time:</strong> <%= "#{booking.start_at} à #{booking.end_at}" %></p>
+          <p><strong>Status:</strong> <%= booking.status %></p>
+        </div>
       </div>
     </div>
   <% end %>

@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <% @games.where(user: current_user).each do |game| %>
+    <% @games.each do |game| %>
       <div class="col-md-3 mb-4">
         <%= link_to(game_path(game), class: "card-trip") do %>
           <div class="card-trip">
