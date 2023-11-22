@@ -1,0 +1,24 @@
+<div class="game-description">
+  <div class="photo">
+    <% if @game.photo.attached? %>
+      <%= cl_image_tag @game.photo.key,  crop: :fill, class: "img-fluid" %>
+    <% end %><br>
+  </div>
+  <div class="details">
+    <span id="title">🃏 <%=  @game.name.upcase %> | <%= @game.user.first_name %> à <%= @game.user.city %> </span><br>
+    <div class="details-text">Rent <%=  @game.name %> for <%= @game.price %>€ per day 😍<br></div>
+    <div class="details-text">Category: <%= @game.category %><br></div>
+    <div class="details-text">Minimum Players: <%= @game.number_of_players_min %><br></div>
+    <div class="details-text">Maximum Players: <%= @game.number_of_players_max %><br></div>
+  <% if @game.user === current_user %>
+  <div class="btns">
+    <%= link_to "Edit my game", edit_game_path, class:"edit-btn" %>
+    <%= link_to "Delete my announce", game_path(@game), data: { turbo_method: :delete, turbo_confirm: "Are your sure?" }, class:"delete-btn" %>
+</div>
+  <% end %>
+  </div>
+</div>
+<div class="description-text"><i id="diamond" class="fa-solid fa-diamond"></i>
+<span id="description-title">Description</span><br>
+<div id="text"><%=  @game.description %></div>
+</div>
