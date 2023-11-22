@@ -1,0 +1,18 @@
+<div class="card-booking mb-3 p-2">
+  <div class="d-flex justify-content-between">
+    <h5>Booking from <%= booking.start_at.strftime("%d/%m/%Y")  %> to <%= booking.end_at.strftime("%d/%m/%Y")  %></h2>
+    <% if booking.status === "pending" %>
+      <div class="d-flex">
+        <%= link_to booking_accept_path(booking), data: { turbo_method: :patch } do %>
+          <i class="fa-solid fa-check text-success p-2"></i>
+        <% end %>
+        <%= link_to booking_refuse_path(booking), data: { turbo_method: :patch } do %>
+          <i class="fa-solid fa-x text-danger p-2"></i>
+        <% end %>
+      </div>
+    <% elsif booking.status === "accepted" %>
+      <span class="text-success">Accepted</span>
+    <% end %>
+  </div>
+  <span><%= booking.user.first_name %> at <%= booking.user.city %></span>
+</div>
