@@ -1,25 +1,31 @@
-<style>
-  .card-product {
-    margin-bottom: 10px;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 10px;
-  }
-</style>
+<!-- app/views/bookings/index.html.erb -->
 
-<h2>My bookings</h2>
+<h2 class="mb-4">My bookings</h2>
 
 <% @bookings.each do |booking| %>
-  <%= link_to game_path(booking.game) do  %>
-    <div class="card-product">
-      <% if booking.game.photo.attached? %>
-        <img src="<%= cl_image_path(booking.game.photo.key, crop: :fill, height: 100) %>" />
-      <% end %>
-      <div class="card-product-infos">
-        <h2><%= booking.game.name %></h2>
-        <h3><%= booking.game.category %></p>
-        <p><%= booking.game.price %></p>
-        <p>Booking from <%= booking.start_at.strftime("%d/%m/%Y")  %> to <%= booking.end_at.strftime("%d/%m/%Y") %></p>
-        <p>Status : <%= booking.status %></p>
+  <%= link_to game_path(booking.game), class: "text-decoration-none text-dark" do %>
+    <div class="card mb-3">
+      <div class="row g-0">
+        <% if booking.game.photo.attached? %>
+          <div class="col-md-4">
+            <img src="<%= cl_image_path(booking.game.photo.key, crop: :fill) %>" alt="Game Image" class="img-fluid">
+          </div>
+        <% end %>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h1 class="card-title text-center"><%= booking.game.name %></h1>
+            <h6 class="card-subtitle mb-2 text-muted">Category : <%= booking.game.category %></h6>
+            <p class="card-text"><%= number_with_precision(booking.game.price, precision: 2) %>€ per day</p>
+
+
+            <p class="card-text">
+              <small class="text-muted">
+                Booking from <%= booking.start_at.strftime("%d/%m/%Y") %> to <%= booking.end_at.strftime("%d/%m/%Y") %>
+              </small>
+            </p>
+            <p class="card-text"><strong>Status:</strong> <%= booking.status %></p>
+          </div>
+        </div>
       </div>
     </div>
   <% end %>
