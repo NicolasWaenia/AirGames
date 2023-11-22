@@ -1,7 +1,7 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon mb-5">
   <div class="container-fluid">
-    <%= link_to games_path, class: "navbar-brand" do %>
-    <%= image_tag "https://cdn-icons-png.flaticon.com/512/497/497145.png", class: "img-fluid", alt: "Logo" %>
+    <%= link_to games_path, class: "navbar-brand text-white" do %>
+    <%# <%= image_tag "https://cdn-icons-png.flaticon.com/512/497/497145.png", class: "img-fluid", alt: "Logo" %> <%#%>
     <span class="fs-1">AirGames</span>
     <% end %>
 
@@ -14,13 +14,13 @@
       <ul class="navbar-nav ms-auto">
         <% if user_signed_in? %>
         <li class="nav-item">
-          <%= link_to "My games", my_games_path, class: "nav-link" %>
+          <%= link_to "My games", my_games_path, class: "nav-link text-white text-navbar" %>
         </li>
         <li class="nav-item">
-          <%= link_to "My bookings", my_bookings_path, class: "nav-link" %>
+          <%= link_to "My bookings", my_bookings_path, class: "nav-link text-white text-navbar" %>
         </li>
         <li class="nav-item">
-          <%= link_to "Add new game", new_game_path, class: "nav-link" %>
+          <%= link_to "Add new game", new_game_path, class: "nav-link text-white text-navbar" %>
         </li>
 
         <li class="nav-item dropdown">
@@ -34,7 +34,7 @@
         </li>
         <% else %>
         <li class="nav-item">
-          <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+          <%= link_to "Login", new_user_session_path, class: "nav-link text-navbar text-white" %>
         </li>
         <% end %>
       </ul>
