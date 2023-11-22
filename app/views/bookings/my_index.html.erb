@@ -2,31 +2,37 @@
 
 <h2 class="mb-4">My bookings</h2>
 
-<% @bookings.each do |booking| %>
-  <%= link_to game_path(booking.game), class: "text-decoration-none text-dark" do %>
-    <div class="card mb-3">
-      <div class="row g-0">
-        <% if booking.game.photo.attached? %>
-          <div class="col-md-4">
-            <img src="<%= cl_image_path(booking.game.photo.key, crop: :fill) %>" alt="Game Image" class="img-fluid">
-          </div>
-        <% end %>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h1 class="card-title text-center"><%= booking.game.name %></h1>
-            <h6 class="card-subtitle mb-2 text-muted">Category : <%= booking.game.category %></h6>
-            <p class="card-text"><%= number_with_precision(booking.game.price, precision: 2) %>€ per day</p>
+<div class="row row-cols-1 row-cols-md-2 g-4">
+  <% @bookings.each do |booking| %>
+    <div class="col">
+      <%= link_to game_path(booking.game), class: "text-decoration-none text-dark" do %>
+        <div class="card h-100">
+          <div class="row g-0">
+            <% if booking.game.photo.attached? %>
+              <div class="col-md-4">
+                <img src="<%= cl_image_path(booking.game.photo.key, crop: :fill, gravity: :center) %>" alt="Game Image" class="img-fluid rounded w-100 h-100">
+              </div>
+            <% end %>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h1 class="card-title text-center mb-3"><%= booking.game.name %></h1>
+                <h3 class="card-subtitle mb-2">Category: <%= booking.game.category %></h3>
+                <p class="card-text mb-3">Price: <%= number_with_precision(booking.game.price, precision: 2) %>€ per day</p>
 
+                <p class="card-text mb-3">
+                  <small class="text-muted">
+                    Booking from <%= booking.start_at.strftime("%d/%m/%Y") %> to <%= booking.end_at.strftime("%d/%m/%Y") %>
+                  </small>
+                </p>
 
-            <p class="card-text">
-              <small class="text-muted">
-                Booking from <%= booking.start_at.strftime("%d/%m/%Y") %> to <%= booking.end_at.strftime("%d/%m/%Y") %>
-              </small>
-            </p>
-            <p class="card-text"><strong>Status:</strong> <%= booking.status %></p>
+                <p class="card-text text-end position-absolute bottom-0 end-0" style="margin-bottom: 6px; margin-right: 12px;">
+                  <strong>Status:</strong> <%= booking.status %>
+                </p>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      <% end %>
     </div>
   <% end %>
-<% end %>
+</div>
