@@ -1,7 +1,7 @@
 <div class="game-description">
   <div class="photo">
     <% if @game.photo.attached? %>
-      <%= cl_image_tag @game.photo.key,  crop: :fill, class: "img-fluid" %>
+    <%= cl_image_tag @game.photo.key,  crop: :fill, class: "img-fluid" %>
     <% end %><br>
   </div>
   <div class="details">
@@ -10,15 +10,41 @@
     <div class="details-text">Category: <%= @game.category %><br></div>
     <div class="details-text">Minimum Players: <%= @game.number_of_players_min %><br></div>
     <div class="details-text">Maximum Players: <%= @game.number_of_players_max %><br></div>
-  <% if @game.user === current_user %>
-  <div class="btns">
-    <%= link_to "Edit my game", edit_game_path, class:"edit-btn" %>
-    <%= link_to "Delete my announce", game_path(@game), data: { turbo_method: :delete, turbo_confirm: "Are your sure?" }, class:"delete-btn" %>
-</div>
-  <% end %>
+    <% if @game.user === current_user %>
+    <div class="btns">
+      <%= link_to "Edit my game", edit_game_path, class:"edit-btn" %>
+      <%= link_to "Delete my announce", game_path(@game), data: { turbo_method: :delete, turbo_confirm: "Are your sure?" }, class:"delete-btn" %>
+    </div>
+    <% end %>
   </div>
 </div>
-<div class="description-text"><i id="diamond" class="fa-solid fa-diamond"></i>
-<span id="description-title">Description</span><br>
-<div id="text"><%=  @game.description %></div>
-</div>
+<div class="description-text mb-5 pb-5">
+  <div class="row justify-content-between">
+    <div class="col-8 pe-5 border-end">
+      <i id="diamond" class="fa-solid fa-diamond"></i>
+      <span id="description-title">Description</span><br>
+      <div id="text"><%=  @game.description %></div>
+    </div>
+    <div class="col-4 px-5">
+      <% if @game.user === current_user %>
+        <i id="diamond" class="fa-solid fa-diamond"></i>
+        <span id="description-title">Next bookings :</span><br><br>
+        <% bookings = @game.bookings.where(status: ["pending", "accepted"]).where("start_at >= ?", Time.now.midnight).order(:created_at) %>
+        <% bookings.each do |booking| %>
+        <%= render "shared/bookings", booking: booking %>
+      <% end %>
+      <% else %>
+        <i id="diamond" class="fa-solid fa-diamond"></i>
+        <span id="description-title">Booking :</span><br><br>
+        <%= simple_form_for [@game, @booking] do |f| %>
+        <%= f.input :start_at,
+              as: :string,
+              input_html: { data: { controller: "datepicker"} } %>
+        <%= f.input :end_at,
+              as: :string,
+              input_html: { data: { controller: "datepicker" } } %>
+        <%= f.submit %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
