@@ -10,7 +10,15 @@
               <%= image_tag "des.jpg", class: "card-image mt-2 img-fluid", alt: "Default Game Image" %>
             <% end %>
 
+
             <div class="card-trip-infos border-top pt-3">
+              <% if game.user === current_user %>
+                <% bookings_count = game.bookings.where(status: "pending").where("start_at >= ?", Time.now.midnight).count %>
+                <% if bookings_count > 0 %>
+                  <span class="booking-infos"><%= pluralize(bookings_count, 'pending booking') %></span>
+                <% end %>
+              <% end %>
+
               <div>
                 <h2><%= game.name %></h2>
                 <p class="detail">Category: <%= game.category %></p>
@@ -18,6 +26,7 @@
               </div>
               <h2 class="card-trip-pricing text-right"><%= game.price %>€</h2>
             </div>
+
           </div>
         <% end %>
       </div>
