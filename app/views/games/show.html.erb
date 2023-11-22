@@ -7,18 +7,10 @@
 
 <%# ici, la réservation //Jennifer 👩 %>
 
-
 <% if @game.user === current_user %>
-  <% bookings = @game.bookings.where(status: ["pending", "accepted"]).where("start_at >= ?", Time.now.midnight) %>
+  <% bookings = @game.bookings.where(status: ["pending", "accepted"]).where("start_at >= ?", Time.now.midnight).order(:created_at) %>
   <% bookings.each do |booking| %>
-    <div class="card-product">
-      <% if booking.status === "pending" %>
-        <%= link_to "Accept", booking_accept_path(booking), data: { turbo_method: :patch } %>
-        <%= link_to "Refuse", booking_refuse_path(booking), data: { turbo_method: :patch } %>
-      <% end %>
-      <h2>From <%= booking.start_at.strftime("%d/%m/%Y")  %> to <%= booking.end_at.strftime("%d/%m/%Y")  %></h2>
-      <p><%= booking.user.email %></p>
-    </div>
+    <%= render "shared/bookings", booking: booking %>
   <% end %>
 <% else %>
   <%= simple_form_for [@game, @booking] do |f| %>
