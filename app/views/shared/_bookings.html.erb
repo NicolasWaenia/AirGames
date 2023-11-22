@@ -1,6 +1,6 @@
 <div class="card-booking mb-3 p-2">
   <div class="d-flex justify-content-between">
-    <h5>Booking from <%= booking.start_at.strftime("%d/%m/%Y")  %> to <%= booking.end_at.strftime("%d/%m/%Y")  %></h2>
+    <h5>From <%= booking.start_at.strftime("%d/%m/%Y")  %> to <%= booking.end_at.strftime("%d/%m/%Y")  %></h2>
     <% if booking.status === "pending" %>
       <div class="d-flex">
         <%= link_to booking_accept_path(booking), data: { turbo_method: :patch } do %>
@@ -11,8 +11,8 @@
         <% end %>
       </div>
     <% elsif booking.status === "accepted" %>
-      <span class="text-success">Accepted</span>
+      <span class="text-success text-accepted">Accepted</span>
     <% end %>
   </div>
-  <span><%= booking.user.first_name %> at <%= booking.user.city %></span>
+  <span><%= booking.user.first_name %>, at <%= booking.user.city %></span>
 </div>
