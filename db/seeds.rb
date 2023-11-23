@@ -52,7 +52,7 @@ catan_game = Game.new(name: 'Catan',
 number_of_players_min: 2,
 number_of_players_max: 6,
 category: 'Science Fiction',
-price: 39.99,
+price: 1.99,
 user: marion,
 description: "Construisez vos villes, vos routes, en profitant au mieux des ressources de cette île si accueillante tout
 en commerçant avec vos voisins. Catan est un jeu passionnant, véritable succès parmi les jeux de société contemporains.
@@ -76,7 +76,7 @@ vilainous_game = Game.create!( name: 'Vilainous',
 number_of_players_min: 2,
 number_of_players_max: 4,
 category: 'Science Fiction',
-price: 39.99,
+price: 3.99,
 user: marion,
 description: "Quel méchant sommeille en vous ?
 
@@ -94,7 +94,7 @@ uno_game = Game.new( name: 'Uno',
 number_of_players_min: 2 ,
 number_of_players_max: 8,
 category: 'Card Game',
-price: 14.99,
+price: 1.50,
 user: jennifer,
 description: "Facile à apprendre, vous serez vite gagnés par la frénésie de UNO, le plus célèbre des jeux de cartes familiaux.
 
@@ -108,7 +108,7 @@ dixit_game = Game.new( name: 'Dixit',
 number_of_players_min: 2,
 number_of_players_max: 8,
 category: 'Science Fiction',
-price: 39.99,
+price: 2,
 user: marion,
 description: "En adaptant le jeu du dictionnaire, l'auteur de Dixit et l'illustratrice ont créé un jeu magique aussi plaisant en famille qu'entre amis. Votre imagination et celle de vos adversaires seront la base du jeu et vous vivrez un moment unique.
 
@@ -131,7 +131,7 @@ citadelles_game = Game.new( name: 'Citadelles',
 number_of_players_min: 1,
 number_of_players_max: 12,
 category: 'Music',
-price: 29.99,
+price: 4.99,
 user: jennifer,
 description: "Dans Citadelles, votre but est de bâtir une cité prestigieuse avant que vos adversaires ne parviennent à construire la leur. Pour développer votre ville et de nouveaux quartiers, il vous faudra bien sûr de l’or, mais aussi le soutien des notables locaux, roi, échevin, cardinal, patricien ou archiviste, et parfois aussi de la lie de la cité, voleur, espion, assassin ou sorcière.
 
@@ -157,7 +157,7 @@ smallworld_game = Game.new( name: 'SmallWorld',
 number_of_players_min: 3,
 number_of_players_max: 8,
 category: 'Science Fiction',
-price: 50.50,
+price: 2.99,
 user: marion,
 description: "Dans le jeu SmallWorld, les joueurs luttent pour conquérir les régions d'un monde où il n'y a pas de place pour tous ! En choisissant la bonne combinaison entre les 14 Peuples et les 20 Pouvoirs Spéciaux au bon moment, vous pourrez étendre votre empire, souvent aux dépens de vos voisins !
 
@@ -174,7 +174,7 @@ cluedo_game = Game.new( name: 'Cluedo',
 number_of_players_min: 2,
 number_of_players_max: 8,
 category: 'Murder/Mystery',
-price: 19.99,
+price: 0.99,
 user: jennifer,
 description: "Cluedo, c'est le jeu des grands détectives. Soyez le premier à démasquer l'assassin et à découvrir le lieu et l'arme du crime, par élimination et déduction.
 
@@ -187,7 +187,7 @@ mysterium_game = Game.create!( name: 'Mysterium',
 number_of_players_min: 2,
 number_of_players_max: 6,
 category: 'Card Game',
-price: 49.99,
+price: 1.99,
 user: marion,
 description: "Dans les années 20, M. MacDowell, brillant astrologue clairvoyant pénètre dans sa nouvelle demeure lorsqu’il ressent immédiatement une présence surnaturelle. Il décide alors de rassembler les plus éminents médiums de son temps pour une séance de spiritisme exceptionnelle. Ils auront 7 heures pour entrer en contact avec le fantôme et résoudre un très ancien mystère…
 
@@ -203,7 +203,7 @@ unlock_game = Game.new( name: 'Unlock',
 number_of_players_min: 2,
 number_of_players_max: 6,
 category: 'Science Fiction',
-price: 99.99,
+price: 1.25,
 user: nicolas,
 description: "Les escape rooms sont des salles dont vous devez vous échapper en moins de 60 minutes. Unlock! vous fait vivre ces expériences chez vous, autour d'une table.
 

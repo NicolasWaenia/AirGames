@@ -3,6 +3,19 @@ class GamesController < ApplicationController
 
   def index
     @games = Game.all
+    # Pour filtrer via les catégories
+    if params[:category].present?
+      @games = @games.where(category: params[:category])
+    end
+
+    if params[:query].present?
+      @games = @games.search_by_name_and_category(params[:query])
+    end
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def my_index
@@ -31,7 +44,6 @@ class GamesController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
-
   end
 
   def edit

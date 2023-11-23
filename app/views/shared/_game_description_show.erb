@@ -44,6 +44,8 @@
           <%= simple_form_for [@game, @booking],
                       html: { data: { controller: "datepicker" } } do |f| %>
             <input type="text" class="form-control" data-datepicker-target="dates" data-action="change->datepicker#setDates change->dynamic-booking-price#updatePrice">
+
+
             <%= f.input :start_at,
                   as: :string,
                   as: :hidden,
