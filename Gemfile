@@ -31,13 +31,10 @@ gem "devise"
 gem "dotenv-rails"
 
 gem "cloudinary"
-<<<<<<< HEAD
 gem "geocoder"
-=======
 
 gem "pg_search"
 
->>>>>>> fd57ac9080832257e5e18df2a2c8dca0f1d8fee0
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
