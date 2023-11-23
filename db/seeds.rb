@@ -11,6 +11,7 @@
 require "open-uri"
 
 puts "Creating accounts......"
+Booking.destroy_all
 Game.destroy_all
 User.destroy_all
 
