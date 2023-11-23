@@ -4,5 +4,3 @@
 //= link_tree ../../../vendor/javascript .js
 //= link popper.js
 //= link bootstrap.min.js
-//= link category_filter.js
-//= link category_modal.js

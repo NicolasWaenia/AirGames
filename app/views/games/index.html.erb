@@ -4,48 +4,15 @@
       <%= text_field_tag :query,
             params[:query],
             class: "form-control",
-            placeholder: "What are you looking for"
+            placeholder: "What game are you looking for"
       %>
       <%= submit_tag "Search", name: "", class: "btn btn-filter" %>
     <% end %>
+    <% if @games.empty? %>
+      <p>Sorry, your game isn't currently available for rent... </p>
+      <% end %>
   </div>
 </div>
-
-<div class="mb-3">
-  <!-- Utilisez un bouton au lieu d'une barre de sélection -->
-  <button type="button" class="btn btn-filter" data-bs-toggle="modal" data-bs-target="#categoryModal">
-    Filter
-  </button>
-
-  <!-- Modal -->
-  <div class="modal fade" id="categoryModal" tabindex="-1" aria-labelledby="categoryModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <!-- Modifiez le texte dans la balise h5 -->
-          <h5 class="modal-title" id="categoryModalLabel">Filter by Category</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <!-- Utilisez une liste pour afficher les catégories -->
-          <ul class="list-group">
-            <% Game.distinct.pluck(:category).each do |category| %>
-              <li class="list-group-item">
-                <%= link_to "#{category} (#{Game.where(category: category).count} games)", games_path(category: category), class: 'category-link' %>
-              </li>
-            <% end %>
-          </ul>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <!-- Ajoutez ici d'autres boutons/modalités au besoin -->
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<%= javascript_include_tag 'category_filter' %>
 
 <div class="row justify-content-center mt-4">
   <%= render "shared/cards" %>
