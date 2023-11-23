@@ -1,8 +1,33 @@
-<div class="reviews">
+ <div class="reviews">
   <%= simple_form_for [@game, @review] do |f| %>
     <%= f.input :comment %>
     <%= f.input :rating %>
     <%= f.submit %>
   <% end %>
+</div>
 
+
+  <div class="comments-section">
+    <h2>Comments</h2>
+    <div class="rating">
+      <div class="stars" data-rating="<%= @game.average_rating %>">
+      <%# attribut HTML standard qui permet de stocker des informations supplémentaires dans le code HTML
+      généralement pour une utilisation JavaScript ou pour transporter des données côté client %>
+        <% (1..5).each do |star| %>
+          <!-- Si la note moyenne est supérieure ou égale à l'indice de l'étoile, ajoute la classe ".filled" -->
+          <span class="star <% if star <= @game.average_rating %>filled<% end %>">&#9733;</span>
+        <% end %>
+      </div>
+    </div>
+      <span><%= @game.average_rating %></span>
+      <span> · <%= @game.reviews.count %> reviews</span>
+<%# une card par review %>
+  <div class="review-card">
+    <% @game.reviews.each do |review| %>
+        <strong><%= review.user.first_name %>:</strong>
+        <%= time_ago = time_ago_in_words(review.updated_at) + " ago" %>
+        <p><%= review.comment %></p>
+        <div class="rating"><%= review.rating %></div>
+    <% end %>
+  </div>
 </div>

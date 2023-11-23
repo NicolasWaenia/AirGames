@@ -31,6 +31,7 @@ gem "devise"
 gem "dotenv-rails"
 
 gem "cloudinary"
+gem "geocoder"
 
 gem "pg_search"
 

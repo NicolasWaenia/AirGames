@@ -11,17 +11,19 @@
 require "open-uri"
 
 puts "Creating accounts......"
+Review.destroy_all
+
 Booking.destroy_all
 Game.destroy_all
 User.destroy_all
 
-marion = User.create!(first_name: "Marion", last_name: "Guédon", address: "Rue des templiers", city: "Lille", email:
+marion = User.create!(first_name: "Marion", last_name: "Guédon", address: "Rue Saint Sébastien, Lille", city: "Lille", email:
 "marion@lewagon.org", password: "password")
-jennifer = User.create!(first_name: "Jennifer", last_name: "Crétal", address: "Rue des chandeliers", city:
+jennifer = User.create!(first_name: "Jennifer", last_name: "Crétal", address: "Rue des gantois, La Madeleine", city:
 "Marquette-Lez-Lille", email: "jennifer@lewagon.org", password: "password")
-nicolas = User.create!(first_name: "Nicolas", last_name: "Cureau", address: "Résidense denise vernay", city: "Liévin",
+nicolas = User.create!(first_name: "Nicolas", last_name: "Cureau", address: "Résidense denise vernay, Lievin", city: "Liévin",
 email: "nicolas@lewagon.org", password: "password")
-acheteur = User.create!(first_name: "User", last_name: "User", address: "Résidense denise vernay", city: "Liévin",
+acheteur = User.create!(first_name: "User", last_name: "User", address: "Rue de Gand, Lille", city: "Lille",
 email: "user@lewagon.org", password: "password")
 
 puts "Accounts created !"
@@ -94,7 +96,9 @@ uno_game = Game.new( name: 'Uno',
 number_of_players_min: 2 ,
 number_of_players_max: 8,
 category: 'Card Game',
+
 price: 1.50,
+
 user: jennifer,
 description: "Facile à apprendre, vous serez vite gagnés par la frénésie de UNO, le plus célèbre des jeux de cartes familiaux.
 
@@ -131,7 +135,9 @@ citadelles_game = Game.new( name: 'Citadelles',
 number_of_players_min: 1,
 number_of_players_max: 12,
 category: 'Music',
+
 price: 4.99,
+
 user: jennifer,
 description: "Dans Citadelles, votre but est de bâtir une cité prestigieuse avant que vos adversaires ne parviennent à construire la leur. Pour développer votre ville et de nouveaux quartiers, il vous faudra bien sûr de l’or, mais aussi le soutien des notables locaux, roi, échevin, cardinal, patricien ou archiviste, et parfois aussi de la lie de la cité, voleur, espion, assassin ou sorcière.
 
@@ -174,6 +180,7 @@ cluedo_game = Game.new( name: 'Cluedo',
 number_of_players_min: 2,
 number_of_players_max: 8,
 category: 'Murder/Mystery',
+
 price: 0.99,
 user: jennifer,
 description: "Cluedo, c'est le jeu des grands détectives. Soyez le premier à démasquer l'assassin et à découvrir le lieu et l'arme du crime, par élimination et déduction.
@@ -203,6 +210,7 @@ unlock_game = Game.new( name: 'Unlock',
 number_of_players_min: 2,
 number_of_players_max: 6,
 category: 'Science Fiction',
+
 price: 1.25,
 user: nicolas,
 description: "Les escape rooms sont des salles dont vous devez vous échapper en moins de 60 minutes. Unlock! vous fait vivre ces expériences chez vous, autour d'une table.
