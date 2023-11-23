@@ -11,6 +11,18 @@ class GamesController < ApplicationController
         lat: user.latitude,
         lng: user.longitude
       }
+    # Pour filtrer via les catégories
+    if params[:category].present?
+      @games = @games.where(category: params[:category])
+    end
+
+    if params[:query].present?
+      @games = @games.search_by_name_and_category(params[:query])
+    end
+
+    respond_to do |format|
+      format.html
+      format.js
     end
   end
 
@@ -40,7 +52,6 @@ class GamesController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
-
   end
 
   def edit

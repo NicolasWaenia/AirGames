@@ -4,4 +4,21 @@
   data-controller="map"
   data-map-markers-value="<%= @markers.to_json %>"
   data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+<div class="row justify-content-center">
+  <div class="col-sm-8 my-2">
+    <%= form_with url: games_path, method: :get, class: "d-flex" do %>
+      <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "What game are you looking for"
+      %>
+      <%= submit_tag "Search", name: "", class: "btn btn-filter" %>
+    <% end %>
+    <% if @games.empty? %>
+      <p>Sorry, your game isn't currently available for rent... </p>
+      <% end %>
+  </div>
+</div>
+<div class="row justify-content-center mt-4">
+  <%= render "shared/cards" %>
 </div>
