@@ -31,8 +31,11 @@ gem "devise"
 gem "dotenv-rails"
 
 gem "cloudinary"
+gem "geocoder"
 
 gem "pg_search"
+
+gem 'jquery-rails'
 
 
 # Use Redis adapter to run Action Cable in production

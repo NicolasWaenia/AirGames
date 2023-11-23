@@ -2,12 +2,31 @@ class GamesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    if params[:query].present?
-      @games = Game.search_by_name_and_category(params[:query])
-    else
-      @games = Game.all
+    @games = Game.all
+    # The `geocoded` scope filters only users with coordinates
+
+    @users = User.all
+    @markers = @users.geocoded.map do |user|
+      {
+        lat: user.latitude,
+        lng: user.longitude
+      }
+    # Pour filtrer via les catégories
+    if params[:category].present?
+      @games = @games.where(category: params[:category])
     end
   end
+
+    if params[:query].present?
+      @games = @games.search_by_name_and_category(params[:query])
+    end
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
   def my_index
     if current_user
       @games = current_user.games
