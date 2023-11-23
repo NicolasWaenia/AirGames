@@ -18,12 +18,14 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
+    @game = Game.find(params[:game_id])
+    @review.user = current_user
+    @review.game = @game
     if @review.save
-      redirect_to @review, notice: 'Review was successfully created.'
+      redirect_to game_path(@game), notice: 'Review was successfully created.'
     else
       render "games/show", status: :unprocessable_entity
     end
-    # Logique pour enregistrer une nouvelle review
   end
 
   # def edit
