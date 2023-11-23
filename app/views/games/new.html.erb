@@ -2,23 +2,14 @@
   <i id="back-btn" class="fa-solid fa-circle-chevron-left"></i>
 <% end %>
 
-<<<<<<< HEAD
-<%= simple_form_for @game do |f| %>
-  <%= f.input :name,  { class: "form-field" } %>
-  <%= f.input :description , input_html: { rows: 8 }%>
-  <%= f.input :number_of_players_min , collection: (1..6), label: 1 %>
-  <%= f.input :number_of_players_max , collection: (1..16)%>
-  <%= f.input :category, collection: ["Card Game", "Adventure", "Farming", "Music", "Party Game", "Science Fiction", "Negotiation", "Children's Game", "Action/Dexterity", "Bluffing", "Murder/Mystery"] %>
-  <%= f.input :price, input_html: { min: 1 } %>
-=======
+
 <%= simple_form_for @game do |f|  %>
-  <%= f.input :name %>
-  <%= f.input :description, input_html: {id: "description-field"} %>
-  <%= f.input :number_of_players_min , collection: (1..6) %>
-  <%= f.input :number_of_players_max , collection: (1..16) %>
-  <%= f.input :category, collection: ["Card Game", "Adventure", "Farming", "Music", "Party Game", "Science Fiction", "Negotiation", "Children's Game", "Action/Dexterity", "Bluffing", "Murder/Mystery"], placeholder: "Card Game" %>
-  <%= f.text_field :price, step: '0.01' %>
->>>>>>> 2b5d65d (style form etc)
-  <%= f.input :photo, as: :file %>
+  <%= f.input :name, input_html: {class: "form-field"} %>
+  <%= f.input :description, input_html: {class: "form-field"} %>
+  <%= f.input :number_of_players_min , collection: (1..6), input_html: {class: "form-field"}  %>
+  <%= f.input :number_of_players_max , collection: (1..16), input_html: {class: "form-field"} %>
+  <%= f.input :category, collection: ["Card Game", "Adventure", "Farming", "Music", "Party Game", "Science Fiction", "Negotiation", "Children's Game", "Action/Dexterity", "Bluffing", "Murder/Mystery"], placeholder: "Card Game", input_html: {class: "form-field"} %>
+  <%= f.input :price, step: '0.01', min: 1, input_html: {class: "form-field"} %>
+  <%= f.input :photo, as: :file, input_html: {class: "form-field"} %>
   <%= f.submit %>
 <% end %>
