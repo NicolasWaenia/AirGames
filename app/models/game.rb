@@ -7,4 +7,14 @@ class Game < ApplicationRecord
   validates :number_of_players_max, inclusion: { in: 1..16 }
   validates :category, inclusion: ["Card Game", "Adventure", "Farming", "Music", "Party Game", "Science Fiction", "Negotiation", "Children's Game", "Action/Dexterity", "Bluffing", "Murder/Mystery"]
   validates :price, numericality: { greater_than_or_equal_to: 1 }
+
+    include PgSearch::Model
+
+    pg_search_scope :search_by_name_and_category,
+      against: [:name, :category],
+      using: {
+        tsearch: { prefix: true }
+      }
+
+
 end

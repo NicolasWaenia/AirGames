@@ -2,9 +2,12 @@ class GamesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @games = Game.all
+    if params[:query].present?
+      @games = Game.search_by_name_and_category(params[:query])
+    else
+      @games = Game.all
+    end
   end
-
   def my_index
     if current_user
       @games = current_user.games
@@ -31,7 +34,6 @@ class GamesController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
-
   end
 
   def edit
