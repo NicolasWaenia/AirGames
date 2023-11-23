@@ -1,7 +1,7 @@
 
   <div class="row">
     <% @games.each do |game| %>
-      <div class="col-md-3 mb-4">
+      <div class="col-md-4 mb-4">
         <%= link_to(game_path(game), class: "card-trip") do %>
           <div class="card-trip">
             <% if game.photo.attached? %>

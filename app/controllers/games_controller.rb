@@ -2,6 +2,7 @@ class GamesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
+<<<<<<< HEAD
     @games = Game.all
     # The `geocoded` scope filters only users with coordinates
 
@@ -13,9 +14,14 @@ class GamesController < ApplicationController
         info_window_html: render_to_string(partial: "info_window", locals: {user: user}),
         marker_html: render_to_string(partial: "marker", locals: {user: user}),
       }
+=======
+    if params[:query].present?
+      @games = Game.search_by_name_and_category(params[:query])
+    else
+      @games = Game.all
+>>>>>>> fd57ac9080832257e5e18df2a2c8dca0f1d8fee0
     end
   end
-
   def my_index
     if current_user
       @games = current_user.games
@@ -42,7 +48,6 @@ class GamesController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
-
   end
 
   def edit
