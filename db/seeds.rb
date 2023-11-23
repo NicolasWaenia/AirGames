@@ -94,7 +94,7 @@ number_of_players_min: 2 ,
 number_of_players_max: 8,
 category: 'Card Game',
 price: 14.99,
-user: marion,
+user: jennifer,
 description: "Facile à apprendre, vous serez vite gagnés par la frénésie de UNO, le plus célèbre des jeux de cartes familiaux.
 
 Pour gagner, débarrassez-vous de toutes vos cartes en jouant une carte de la même couleur, du même numéro ou une carte Action !
@@ -131,7 +131,7 @@ number_of_players_min: 1,
 number_of_players_max: 12,
 category: 'Music',
 price: 29.99,
-user: marion,
+user: jennifer,
 description: "Dans Citadelles, votre but est de bâtir une cité prestigieuse avant que vos adversaires ne parviennent à construire la leur. Pour développer votre ville et de nouveaux quartiers, il vous faudra bien sûr de l’or, mais aussi le soutien des notables locaux, roi, échevin, cardinal, patricien ou archiviste, et parfois aussi de la lie de la cité, voleur, espion, assassin ou sorcière.
 
 Citadelles est un jeu de bluff, d’intrigues et de stratégie. Les joueurs amassent de l’or qu’ils dépensent ensuite pour bâtir les quartiers qui composent leur cité médiévale. À la fin de la partie, le joueur qui a constitué la plus belle, la plus grande, la plus prestigieuse cité est vainqueur.
@@ -174,7 +174,7 @@ number_of_players_min: 2,
 number_of_players_max: 8,
 category: 'Murder/Mystery',
 price: 19.99,
-user: marion,
+user: jennifer,
 description: "Cluedo, c'est le jeu des grands détectives. Soyez le premier à démasquer l'assassin et à découvrir le lieu et l'arme du crime, par élimination et déduction.
 
 Le célèbre milliardaire Samuel Lenoir a été assassiné... et c'est à vous de résoudre le mystère !
@@ -203,7 +203,7 @@ number_of_players_min: 2,
 number_of_players_max: 6,
 category: 'Science Fiction',
 price: 99.99,
-user: marion,
+user: nicolas,
 description: "Les escape rooms sont des salles dont vous devez vous échapper en moins de 60 minutes. Unlock! vous fait vivre ces expériences chez vous, autour d'une table.
 
 Après avoir pris connaissance du contexte du scénario, vous commencez votre aventure dans une pièce (une carte de lieu qui indique divers numéros). Fouillez-la pour trouver des objets ! Attention : certains peuvent être cachés ! Des énigmes visuelles ou audio ralentissent votre progression... à vous de coopérer avec vos partenaires pour avancer et terminer dans les temps !

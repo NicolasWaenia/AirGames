@@ -7,6 +7,7 @@ class Game < ApplicationRecord
   validates :number_of_players_min, inclusion: { in: 1..6 }
   validates :number_of_players_max, inclusion: { in: 1..16 }
   validates :category, inclusion: ["Card Game", "Adventure", "Farming", "Music", "Party Game", "Science Fiction", "Negotiation", "Children's Game", "Action/Dexterity", "Bluffing", "Murder/Mystery"]
+
   validates :price, numericality: { greater_than_or_equal_to: 0.5 }
 
   def average_rating
@@ -18,4 +19,7 @@ class Game < ApplicationRecord
       0 # Si aucun commentaire avec une notation n'existe, la moyenne est 0
     end
   end
+
+  
+
 end
