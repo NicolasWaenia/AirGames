@@ -1,7 +1,12 @@
  <div class="reviews">
   <%= simple_form_for [@game, @review] do |f| %>
     <%= f.input :comment %>
-    <%= f.input :rating %>
+    <%= f.input :rating, as: :hidden %>
+      <div class="my-3">
+        <% Review::RATES.each do |index| %>
+          <i id="<%= index %>" class="review-rating far fa-star"></i>
+        <% end %>
+      </div>
     <%= f.submit %>
   <% end %>
 </div>

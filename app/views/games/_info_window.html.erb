@@ -1,0 +1,6 @@
+<div class="badge rounded-pill fs-6">
+  <div class="first-name-window"><%= user.first_name %></div>
+  <% user.games.each do |game|%>
+    <span class="game-name"><%= link_to game.name, game_path(game) %></span>
+  <% end %>
+</div>

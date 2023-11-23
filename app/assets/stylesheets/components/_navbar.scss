@@ -1,5 +1,12 @@
 @import "variables";
 
+.fixed-navbar{
+  position:sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
 .navbar-lewagon {
   justify-content: space-between;
   background-color: $main-color;
@@ -29,4 +36,13 @@
 
 .img-fluid{
   color: white;
+}
+
+.fa-chess-queen{
+  color: white;
+  font-size: 30px;
+}
+
+.fa-chess-queen a{
+  text-decoration: none;
 }

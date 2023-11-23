@@ -1,0 +1,34 @@
+.badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+
+  .first-name-window {
+    font-weight: bold;
+  }
+
+  .game-name {
+    text-decoration: none;
+    color: #fff;
+    background-color: #007bff;
+    padding: 6px 12px;
+    border-radius: 20px;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: $main-color;
+      color: white
+    }
+
+  }
+}
+
+.game-name a{
+  text-decoration: none
+}
+
+.toggle-map-or-list-btn{
+  display: flex;
+  justify-content: center;
+}

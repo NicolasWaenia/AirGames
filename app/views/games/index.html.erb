@@ -1,7 +1,18 @@
-<%= render "shared/cards" %>
 
-<div style="width: 100%; height: 600px;"
-  data-controller="map"
-  data-map-markers-value="<%= @markers.to_json %>"
-  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+<div data-controller="toggle">
+<div class="toggle-map-or-list-btn">
+  <button id="toggle-map-or-list-btn" data-action="click->toggle#toggleView" data-toggle-target="toggleButton">Show on the Map</button>
+</div>
+  <div class="list-container" data-toggle-target="list">
+    <%= render "shared/cards" %>
+  </div>
+
+
+  <div class="map-container d-none" data-toggle-target="carte">
+    <div data-controller="map"
+      data-map-markers-value="<%= @markers.to_json %>"
+      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
+      style="height: 500px" style="width: 100%">
+    </div>
+  </div>
 </div>

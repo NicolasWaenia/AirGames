@@ -8,9 +8,20 @@
     <span id="title">🃏 <%=  @game.name.upcase %> | <%= @game.user.first_name %> à <%= @game.user.city %> </span><br>
     <div class="details-text">Rent <%=  @game.name %> for <%= @game.price %>€ per day 😍<br></div>
     <div class="details-text">Category: <%= @game.category %><br></div>
-    <div class="details-text">Minimum Players: <%= @game.number_of_players_min %><br></div>
-    <div class="details-text">Maximum Players: <%= @game.number_of_players_max %><br></div>
-    <%# <i class="fa-solid fa-user"></i> %>
+    <div class="details-text">Minimum Players:
+      <% @game.number_of_players_min.times do %>
+        <span class="fa-stack">
+          <i class="fas fa-user fa-stack-1x"></i>
+        </span>
+      <% end %>
+    </div>
+    <div class="details-text">Maximum Players:
+      <% @game.number_of_players_max.times do %>
+        <span class="fa-stack">
+          <i class="fas fa-user fa-stack-1x"></i>
+        </span>
+      <% end %>
+    </div>
     <% if @game.user === current_user %>
     <div class="btns">
       <%= link_to "Edit my game", edit_game_path, class:"edit-btn" %>

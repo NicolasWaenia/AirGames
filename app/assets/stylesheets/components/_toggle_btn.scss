@@ -1,0 +1,17 @@
+#toggle-map-or-list-btn {
+  width: 250px;
+  padding: 10px 20px;
+  margin: 15px;
+  border: none;
+  border-radius: 20px;
+  background-color: $main-color;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: $main-color-light;
+  }
+
+}
