@@ -1,0 +1,18 @@
+.category-link {
+  text-decoration: none;
+  color: #2DABA9;
+}
+
+.btn-filter {
+  background-color: #2DABA9;
+  color: #FFFFFF;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-filter:hover {
+  background-color: #0d8482;
+}

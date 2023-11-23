@@ -27,8 +27,14 @@ gem "stimulus-rails"
 gem "jbuilder"
 
 gem "devise"
+
 gem "dotenv-rails"
+
 gem "cloudinary"
+
+gem "pg_search"
+
+gem 'jquery-rails'
 
 
 # Use Redis adapter to run Action Cable in production

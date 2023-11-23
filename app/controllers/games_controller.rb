@@ -3,8 +3,16 @@ class GamesController < ApplicationController
 
   def index
     @games = Game.all
-  end
 
+    if params[:category].present?
+      @games = @games.where(category: params[:category])
+    end
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
   def my_index
     if current_user
       @games = current_user.games
@@ -31,7 +39,6 @@ class GamesController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
-
   end
 
   def edit
