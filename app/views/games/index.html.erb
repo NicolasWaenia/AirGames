@@ -4,13 +4,10 @@
       <%= text_field_tag :query,
             params[:query],
             class: "form-control",
-            placeholder: "What game are you looking for"
+            placeholder: "What are you looking for"
       %>
-      <%= submit_tag "Search", name: "", class: "btn btn-filter" %>
+      <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
     <% end %>
-    <% if @games.empty? %>
-      <p>Sorry, your game isn't currently available for rent... </p>
-      <% end %>
   </div>
 </div>
 <div class="row justify-content-center mt-4">
