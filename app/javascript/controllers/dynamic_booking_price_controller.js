@@ -7,7 +7,10 @@ export default class extends Controller {
   static values = { price: Number };
 
   connect() {
-    console.log("Hello")
+    console.log("Hello");
+    this.element.addEventListener('change', (event) => {
+      console.log("Événement de changement détecté :", event);
+    });
   }
 
   updatePrice() {
@@ -28,7 +31,7 @@ export default class extends Controller {
   }
 
   setPriceValue(value) {
-    this.priceHolderTarget.innerText = value
+    this.priceHolderTarget.innerText = `Total price : ${value}€`;
   }
 
   diffInDays(startDate, endDate) {

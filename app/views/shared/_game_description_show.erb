@@ -43,7 +43,9 @@
         <div data-controller="dynamic-booking-price" data-dynamic-booking-price-price-value="<%= @game.price %>">
           <%= simple_form_for [@game, @booking],
                       html: { data: { controller: "datepicker" } } do |f| %>
-            <input type="text" id="form-show" class="form-control" data-datepicker-target="dates" data-action="change->datepicker#setDates" data-action="change->dynamic-booking-price#updatePrice">
+            <input type="text" class="form-control" data-datepicker-target="dates" data-action="change->datepicker#setDates change->dynamic-booking-price#updatePrice">
+
+
             <%= f.input :start_at,
                   as: :string,
                   as: :hidden,
@@ -56,7 +58,7 @@
                     dynamic_booking_price_target: "endTime" } } %>
             <%= f.submit %>
           <% end %>
-            <p>Total price: <span data-dynamic-booking-price-target="priceHolder"><%= @game.price %></span> €</p>
+            <p data-dynamic-booking-price-target="priceHolder"></p>
         </div>
       <% end %>
     </div>
