@@ -15,6 +15,7 @@ class GamesController < ApplicationController
     if params[:category].present?
       @games = @games.where(category: params[:category])
     end
+  end
 
     if params[:query].present?
       @games = @games.search_by_name_and_category(params[:query])
