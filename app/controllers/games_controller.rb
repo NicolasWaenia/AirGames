@@ -2,10 +2,15 @@ class GamesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    if params[:query].present?
-      @games = Game.search_by_name_and_category(params[:query])
-    else
-      @games = Game.all
+    @games = Game.all
+
+    if params[:category].present?
+      @games = @games.where(category: params[:category])
+    end
+
+    respond_to do |format|
+      format.html
+      format.js
     end
   end
   def my_index
