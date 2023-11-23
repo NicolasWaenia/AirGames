@@ -3,6 +3,7 @@ class GamesController < ApplicationController
 
   def index
     @games = Game.all
+    # Pour filtrer via les catégories
     if params[:category].present?
       @games = @games.where(category: params[:category])
     end
