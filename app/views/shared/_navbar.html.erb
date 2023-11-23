@@ -18,10 +18,9 @@
             <%= image_tag "https://cdn-icons-png.flaticon.com/512/1752/1752751.png", class: "avatar", alt: "Profile" %>
           </a>
           <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-
            <%= link_to "My games", my_games_path, class: "dropdown-item" %>
            <%= link_to "My bookings", my_bookings_path, class: "dropdown-item" %>
-           <%= link_to "Log out", destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, class: "dropdown-item"%>
+<%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item", data: { turbo_frame: '_top' } %>
 
           </div>
         </li>
