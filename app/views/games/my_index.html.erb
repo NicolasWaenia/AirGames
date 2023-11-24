@@ -14,7 +14,7 @@
             <div class="card-trip-infos border-top pt-3">
                 <% bookings_pending_count = game[:game].bookings.where(status: "pending").where("start_at >= ?", Time.now.midnight).count %>
                 <% if bookings_pending_count > 0 %>
-                  <span class="booking-infos"><%= pluralize(bookings_pending_count, 'pending booking') %></span>
+                  <span class="booking-infos"><%= pluralize(bookings_pending_count, 'pending booking') %> ⌛</span>
                 <% end %>
 
               <div>
