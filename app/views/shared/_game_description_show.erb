@@ -53,7 +53,7 @@
         <% end %>
       <% else %>
         <i id="diamond" class="fa-solid fa-diamond"></i>
-        <span id="description-title">Booking :</span>
+        <span class="description-title">Booking :</span><br><br>
         <div data-controller="dynamic-booking-price" data-dynamic-booking-price-price-value="<%= @game.price %>">
             <%= simple_form_for [@game, @booking],
                         html: { data: { controller: "datepicker" } } do |f| %>
@@ -70,7 +70,7 @@
                       dynamic_booking_price_target: "endTime" } } %>
               <%= f.submit 'Ask for booking', class: 'submit-btn' %>
             <% end %>
-              <p data-dynamic-booking-price-target="priceHolder"></p>
+              <p data-dynamic-booking-price-target="priceHolder" class="mt-4"></p>
           </div>
       <% end %>
     </div>
