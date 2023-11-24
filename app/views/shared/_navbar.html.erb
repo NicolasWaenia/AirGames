@@ -5,7 +5,7 @@
   <% end %>
 
     <%= link_to games_path, class: "navbar-brand" do %>
-    <span class="fs-1" id= "airgames-title">AirGames</span>
+    <span class="fs-1 " id= "airgames-title">AirGames</span>
     <% end %>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -18,7 +18,6 @@
         <% if user_signed_in? %>
           <%= link_to "+ Add a new game", new_game_path, class: "nav-link text-white text-navbar" %>
         </li>
-
        <li class="nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
     aria-haspopup="true" aria-expanded="false">
