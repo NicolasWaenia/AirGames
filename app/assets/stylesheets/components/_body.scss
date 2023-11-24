@@ -1,0 +1,10 @@
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Assure que le corps occupe au moins toute la hauteur de l'écran */
+}
+
+.container {
+  flex: 1; /* Permet au contenu de s'étendre et de pousser le footer vers le bas */
+}
+

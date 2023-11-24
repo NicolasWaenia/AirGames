@@ -20,10 +20,10 @@
       <%# <%= link_to "Edit my game", edit_game_path, class:"edit-btn" %>
       <%# <%= link_to "Delete my announce", game_path(@game), data: { turbo_method: :delete, turbo_confirm: "Are your sure?" }, class:"delete-btn" %>
       <%= link_to edit_game_path do %>
-        <i class="fas fa-edit text-dark"></i>
+        <i class="fas fa-edit text-dark edit-btn edit-icon"></i>
       <% end %>
-      <%= link_to game_path(@game), method: :delete, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "position-absolute top-0 end-0 ms-2" do %>
-        <i class="fas fa-trash text-danger"></i>
+      <%= link_to game_path(@game), method: :delete, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+        <i class="fas fa-trash text-danger delete-btn"></i>
       <% end %>
     </div>
 
