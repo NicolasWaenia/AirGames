@@ -9,7 +9,7 @@
 
 .navbar-lewagon {
   justify-content: space-between;
-  background-color: $main-color;
+  background-color: white;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -31,19 +31,25 @@
 }
 
 #airgames-title{
-  color: white;
+  color: $main-color;
   margin-right: 500px;
 }
 
 .img-fluid{
-  color: white;
+  color: $main-color;
 }
 
-.fa-chess-queen{
-  color: white;
+.fa-fire-flame-curved{
+  color: $main-color;
   font-size: 30px;
+  padding-right: 20px;
+  text-decoration: none !important;
+  margin-top: 20px;
+  margin-left: 20px;
 }
 
-.fa-chess-queen a{
-  text-decoration: none;
+.logo-title{
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
 }
