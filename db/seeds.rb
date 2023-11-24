@@ -15,6 +15,15 @@ Review.destroy_all
 Game.destroy_all
 User.destroy_all
 
+photo_marion =
+URI.open("https://avatars.githubusercontent.com/u/137996776?v=4")
+
+photo_jf =
+URI.open("https://avatars.githubusercontent.com/u/109537083?v=4")
+
+photo_nicolas =
+URI.open("https://avatars.githubusercontent.com/u/147147521?v=4")
+
 marion = User.create!(first_name: "Marion", last_name: "Guédon", address: "Rue Saint Sébastien, Lille", city: "Lille", email:
 "marion@lewagon.org", password: "password")
 jennifer = User.create!(first_name: "Jennifer", last_name: "Crétal", address: "Rue des gantois, La Madeleine", city:
@@ -23,6 +32,12 @@ nicolas = User.create!(first_name: "Nicolas", last_name: "Cureau", address: "Ré
 email: "nicolas@lewagon.org", password: "password")
 acheteur = User.create!(first_name: "User", last_name: "User", address: "Rue de Gand, Lille", city: "Lille",
 email: "user@lewagon.org", password: "password")
+
+
+marion.profile_picture.attach(io: photo_marion, filename: "marion.jpg", content_type: "image/jpg")
+jennifer.profile_picture.attach(io: photo_jf, filename: "jf.jpg", content_type: "image/jpg")
+nicolas.profile_picture.attach(io: photo_nicolas, filename: "nicolas.jpg", content_type: "image/jpg")
+
 
 puts "Accounts created !"
 puts "------------------"
@@ -70,6 +85,7 @@ simplicité, a une dimension tactique et stratégique très sympathique. Des ext
 permettent, en apportant de nouvelles possibilités, de renouveler le jeu et de le rendre encore plus passionnant.")
 catan_game.photo.attach(io: photo_catan, filename: "catan.jpg", content_type: "image/jpg")
 catan_game.save
+
 
 
 vilainous_game = Game.create!( name: 'Vilainous',
