@@ -10,9 +10,7 @@
     <div class="details-text">Category: <%= @game.category %><br></div>
     <div class="details-text">Minimum Players:
       <% @game.number_of_players_min.times do %>
-        <span class="fa-stack">
-          <i class="fas fa-user fa-stack-1x"></i>
-        </span>
+
       <% end %>
     </div>
     <div class="details-text">Maximum Players:
@@ -24,8 +22,14 @@
     </div>
     <% if @game.user === current_user %>
     <div class="btns">
-      <%= link_to "Edit my game", edit_game_path, class:"edit-btn" %>
-      <%= link_to "Delete my announce", game_path(@game), data: { turbo_method: :delete, turbo_confirm: "Are your sure?" }, class:"delete-btn" %>
+      <%# <%= link_to "Edit my game", edit_game_path, class:"edit-btn" %>
+      <%# <%= link_to "Delete my announce", game_path(@game), data: { turbo_method: :delete, turbo_confirm: "Are your sure?" }, class:"delete-btn" %>
+      <%= link_to edit_game_path, class: "position-absolute top-0 end-0" do %>
+        <i class="fas fa-edit text-dark"></i>
+      <% end %>
+      <%= link_to game_path(@game), method: :delete, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "position-absolute top-0 end-0 ms-2" do %>
+        <i class="fas fa-trash text-danger"></i>
+      <% end %>
     </div>
     <% end %>
   </div>
@@ -40,7 +44,7 @@
     <div class="col-4 px-5">
       <% if @game.user === current_user %>
         <i id="diamond" class="fa-solid fa-diamond"></i>
-        <span id="description-title">Next bookings :</span><br><br>
+        <span id="description-title">Next bookings </span><br><br>
         <% bookings = @game.bookings.where(status: ["pending", "accepted"]).where("start_at >= ?", Time.now.midnight).order(:created_at) %>
         <% bookings.each do |booking| %>
         <%= render "shared/bookings", booking: booking %>
@@ -62,7 +66,7 @@
                     as: :hidden,
                     input_html: { data: { datepicker_target: "endTime",
                       dynamic_booking_price_target: "endTime" } } %>
-              <%= f.submit %>
+              <%= f.submit 'Ask for booking', class: 'submit-btn' %>
             <% end %>
               <p data-dynamic-booking-price-target="priceHolder"></p>
           </div>

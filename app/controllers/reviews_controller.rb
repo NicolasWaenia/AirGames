@@ -28,7 +28,7 @@ class ReviewsController < ApplicationController
     # end
 
     if @review.save
-      redirect_to game_path(@game)
+      redirect_to game_path(@game, anchor: "comment")
     else
       render "games/show"
     end
