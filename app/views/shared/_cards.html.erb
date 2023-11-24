@@ -20,7 +20,11 @@
               <div>
                 <h2><%= game.name %></h2>
                 <p class="detail">Category: <%= game.category %></p>
-                <p class="detail"> <%= "From #{game.number_of_players_min} to #{game.number_of_players_max}" %> Players</p>
+                <p class="detail">
+                <%= image_tag('number_player', alt: 'Logo', size: "25x25") %>
+                <%= "#{game.number_of_players_min} - #{game.number_of_players_max}" %>
+                </p>
+
               </div>
               <h2 class="card-trip-pricing text-right"><%= game.price %>€ per day</h2>
             </div>
