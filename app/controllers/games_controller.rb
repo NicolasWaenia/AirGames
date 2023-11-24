@@ -45,6 +45,8 @@ class GamesController < ApplicationController
     @game = Game.find(params[:id])
     @booking = Booking.new
     @review = Review.new
+    @reviews = @game.reviews
+    @average_rating = @reviews.average(:rating)
   end
 
   def new
