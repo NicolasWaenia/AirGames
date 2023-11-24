@@ -41,7 +41,7 @@
       <% if @game.user === current_user %>
         <i id="diamond" class="fa-solid fa-diamond"></i>
 
-        <span id="description-title">Next bookings </span><br><br>
+        <span class="description-title">Next bookings </span>
 
         <% bookings = @game.bookings.where(status: ["pending", "accepted"]).where("start_at >= ?", Time.now.midnight).order(:created_at) %>
         <% if bookings.any? %>
@@ -53,7 +53,7 @@
         <% end %>
       <% else %>
         <i id="diamond" class="fa-solid fa-diamond"></i>
-        <span id="description-title">Booking :</span><br><br>
+        <span id="description-title">Booking :</span>
         <div data-controller="dynamic-booking-price" data-dynamic-booking-price-price-value="<%= @game.price %>">
             <%= simple_form_for [@game, @booking],
                         html: { data: { controller: "datepicker" } } do |f| %>
