@@ -3,26 +3,7 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="stars-in-review-form"
 export default class extends Controller {
   connect() {
-
-
-
-
-
-
     this.dynamicRating();
-
-
-
-
-
-
-
-
-
-
-
-
-
   }
 
 
@@ -75,12 +56,5 @@ export default class extends Controller {
       });
     };
   };
-
-
-
-
-
-
-
 
 }
