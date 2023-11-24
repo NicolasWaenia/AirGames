@@ -1,17 +1,20 @@
+<%# form %>
  <div class="reviews">
-  <%= simple_form_for [@game, @review] do |f| %>
-    <%= f.input :comment %>
+  <%= simple_form_for [@game, @review], data: {turbo: false } do |f| %>
+    <%= f.input :comment, label: 'Write a comment about your booking', input_html: { class: 'input-comment' } %>
     <%= f.input :rating, as: :hidden %>
       <div class="my-3">
         <% Review::RATES.each do |index| %>
           <i id="<%= index %>" class="review-rating far fa-star"></i>
+
         <% end %>
       </div>
-    <%= f.submit %>
+    <%= f.submit 'Comment', class: 'submit-btn' %>
+
   <% end %>
 </div>
 
-
+<%# la moyenne %>
   <div class="comments-section" data-controller="stars-in-review-form">
     <h2 id="comment">Comments</h2>
     <div class="rating">
@@ -20,18 +23,18 @@
       généralement pour une utilisation JavaScript ou pour transporter des données côté client %>
         <% (1..5).each do |star| %>
           <!-- Si la note moyenne est supérieure ou égale à l'indice de l'étoile, ajoute la classe ".filled" -->
-          <span class="star <% if star <= @game.average_rating %>filled<% end %>">&#9733;</span>
-        <% end %>
+          <% filled_star_class = star <= @game.average_rating ? 'fas' : 'far' %>
+        <i class="<%= filled_star_class %> fa-star"></i>        <% end %>
       </div>
     </div>
-      <span><%= @game.average_rating %></span>
+      <span><%= @game.average_rating %>/5</span>
       <span> · <%= @game.reviews.count %> reviews</span>
 
-
+<%# previous comments %>
   <div class="review-card">
-    <% @game.reviews.each do |review| %>
+    <% @game.reviews.reverse.each do |review| %>
         <strong><%= review.user.first_name %>:</strong>
-        <%= time_ago = time_ago_in_words(review.updated_at) + " ago" %>
+        <span id="ago"><%= time_ago = time_ago_in_words(review.updated_at) + " ago" %></span>
         <p><%= review.comment %></p>
         <div class="rating"><%= review.rating %></div>
     <% end %>

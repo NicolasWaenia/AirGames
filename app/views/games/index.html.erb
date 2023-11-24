@@ -6,7 +6,9 @@
             class: "form-control",
             placeholder: "Type a keyword"
         %>
-      <%= submit_tag "Search", name: "", class: "search-btn" %>
+
+      <%= submit_tag "Search", name: "", class: "submit-btn" %>
+
     <% end %>
 
     <% if params[:query].present? %>
@@ -17,6 +19,7 @@
       <% else %>
         <p>No results found</p>
       <% end %>
+
     <% end %>
   </div>
 </div>
