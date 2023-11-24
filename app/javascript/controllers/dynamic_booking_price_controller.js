@@ -32,6 +32,6 @@ export default class extends Controller {
   }
 
   totalValue(days) {
-    return (days) * this.priceValue
+    return parseFloat(((days) * this.priceValue).toFixed(2));
   }
 }
