@@ -5,6 +5,7 @@ export default class extends Controller {
   static targets = ["carte", "list", "toggleButton"];
 
   connect() {
+    console.log("coucou")
   }
 
   toggleView() {
