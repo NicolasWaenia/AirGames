@@ -2,14 +2,16 @@
   <i id="back-btn" class="fa-solid fa-circle-chevron-left"></i>
 <% end %>
 
-
-<%= simple_form_for @game do |f|  %>
-  <%= f.input :name, input_html: {class: "form-field"} %>
-  <%= f.input :description, input_html: {class: "form-field"} %>
-  <%= f.input :number_of_players_min , collection: (1..6), input_html: {class: "form-field"}  %>
-  <%= f.input :number_of_players_max , collection: (1..16), input_html: {class: "form-field"} %>
-  <%= f.input :category, collection: ["Card Game", "Adventure", "Farming", "Music", "Party Game", "Science Fiction", "Negotiation", "Children's Game", "Action/Dexterity", "Bluffing", "Murder/Mystery"], placeholder: "Card Game", input_html: {class: "form-field"} %>
-  <%= f.input :price, step: '0.01', min: 1, input_html: {class: "form-field"} %>
-  <%= f.input :photo, as: :file, input_html: {class: "form-field"} %>
-  <%= f.submit %>
-<% end %>
+<div class="d-flex justify-content-center">
+  <%= simple_form_for @game, html: {class: "card-form"} do |f|  %>
+    <h2 class="fw-bold mb-4">Game details 🎲</h2>
+    <%= f.input :name, input_html: {class: "form-field"} %>
+    <%= f.input :description, input_html: {class: "form-field"} %>
+    <%= f.input :number_of_players_min , collection: (1..6), input_html: {class: "form-field"}  %>
+    <%= f.input :number_of_players_max , collection: (1..16), input_html: {class: "form-field"} %>
+    <%= f.input :category, collection: ["Card Game", "Adventure", "Farming", "Music", "Party Game", "Science Fiction", "Negotiation", "Children's Game", "Action/Dexterity", "Bluffing", "Murder/Mystery"], placeholder: "Card Game", input_html: {class: "form-field"} %>
+    <%= f.input :price, step: '0.01', min: 1, input_html: {class: "form-field"} %>
+    <%= f.input :photo, as: :file, input_html: {class: "form-field"} %>
+    <%= f.submit 'Add your game', class: 'submit-btn mt-4' %>
+  <% end %>
+</div>
