@@ -4,7 +4,7 @@
       <%= text_field_tag :query,
             params[:query],
             class: "form-control",
-            placeholder: "Type a keyword"
+            placeholder: "Type game name or game category"
         %>
 
       <%= submit_tag "Search", name: "", class: "submit-btn" %>
@@ -24,21 +24,19 @@
   </div>
 </div>
 
+<div data-controller="map" data-map-markers-value="<%= @markers.to_json %>"
+        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+  <div class="toggle-map-or-list-btn">
+    <button id="toggle-map-or-list-btn" data-action="click->map#toggleView" data-map-target="toggleButton">Show on the Map</button>
+  </div>
+  <div class="list-container" data-map-target="list">
 
-<div data-controller="toggle">
-<div class="toggle-map-or-list-btn">
-  <button id="toggle-map-or-list-btn" data-action="click->toggle#toggleView" data-toggle-target="toggleButton">Show on the Map<i class="fa-solid fa-map map-icon"></i></button>
-</div>
-  <div class="list-container" data-toggle-target="list">
     <%= render "shared/cards" %>
   </div>
+  <div class="map-container d-none" data-map-target="carte">
+    <div data-map-target="map"
 
-
-  <div class="map-container d-none" data-toggle-target="carte">
-    <div data-controller="map"
-      data-map-markers-value="<%= @markers.to_json %>"
-      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
-      style="height: 500px" style="width: 100%">
+        style="height: 500px">
     </div>
   </div>
 </div>

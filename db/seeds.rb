@@ -14,6 +14,7 @@ puts "Creating accounts......"
 Review.destroy_all
 Game.destroy_all
 User.destroy_all
+Booking.destroy_all
 
 photo_marion =
 URI.open("https://avatars.githubusercontent.com/u/137996776?v=4")
@@ -265,4 +266,44 @@ Review.create!(
   rating: 5.0,
   user: marion,
   game: vilainous_game
+)
+
+puts "Review created !"
+
+
+puts "Creating bookings !"
+
+booking1 = Booking.create!(
+  start_at: DateTime.now,
+  end_at: DateTime.now + 2.days,
+  status: 'accepted',
+  total_price: 2.97,
+  user: jennifer,
+  game: mysterium_game
+)
+
+booking2 = Booking.create!(
+  start_at: DateTime.now + 1.day,
+  end_at: DateTime.now + 3.days,
+  status: 'pending',
+  total_price: 12.30,
+  user: jennifer,
+  game: smallworld_game
+)
+booking3 = Booking.create!(
+  start_at: DateTime.now,
+  end_at: DateTime.now + 2.days,
+  status: 'accepted',
+  total_price: 5.55,
+  user: marion,
+  game: uno_game
+)
+
+booking4 = Booking.create!(
+  start_at: DateTime.now + 1.day,
+  end_at: DateTime.now + 3.days,
+  status: 'pending',
+  total_price: 5.97,
+  user: jennifer,
+  game: catan_game
 )
