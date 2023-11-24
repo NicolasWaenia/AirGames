@@ -21,10 +21,16 @@ class ReviewsController < ApplicationController
     @game = Game.find(params[:game_id])
     @review.user = current_user
     @review.game = @game
+    # if @review.save
+    #   redirect_to game_path(@game), notice: 'Review was successfully created.'
+    # else
+    #   render "games/show", status: :unprocessable_entity
+    # end
+
     if @review.save
-      redirect_to game_path(@game), notice: 'Review was successfully created.'
+      redirect_to game_path(@game, anchor: "comment")
     else
-      render "games/show", status: :unprocessable_entity
+      render "games/show"
     end
   end
 

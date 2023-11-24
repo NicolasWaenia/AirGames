@@ -15,6 +15,15 @@ Review.destroy_all
 Game.destroy_all
 User.destroy_all
 
+photo_marion =
+URI.open("https://avatars.githubusercontent.com/u/137996776?v=4")
+
+photo_jf =
+URI.open("https://avatars.githubusercontent.com/u/109537083?v=4")
+
+photo_nicolas =
+URI.open("https://avatars.githubusercontent.com/u/147147521?v=4")
+
 marion = User.create!(first_name: "Marion", last_name: "Guédon", address: "Rue Saint Sébastien, Lille", city: "Lille", email:
 "marion@lewagon.org", password: "password")
 jennifer = User.create!(first_name: "Jennifer", last_name: "Crétal", address: "Rue des gantois, La Madeleine", city:
@@ -23,6 +32,12 @@ nicolas = User.create!(first_name: "Nicolas", last_name: "Cureau", address: "Ré
 email: "nicolas@lewagon.org", password: "password")
 acheteur = User.create!(first_name: "User", last_name: "User", address: "Rue de Gand, Lille", city: "Lille",
 email: "user@lewagon.org", password: "password")
+
+
+marion.profile_picture.attach(io: photo_marion, filename: "marion.jpg", content_type: "image/jpg")
+jennifer.profile_picture.attach(io: photo_jf, filename: "jf.jpg", content_type: "image/jpg")
+nicolas.profile_picture.attach(io: photo_nicolas, filename: "nicolas.jpg", content_type: "image/jpg")
+
 
 puts "Accounts created !"
 puts "------------------"
@@ -72,12 +87,13 @@ catan_game.photo.attach(io: photo_catan, filename: "catan.jpg", content_type: "i
 catan_game.save
 
 
+
 vilainous_game = Game.create!( name: 'Vilainous',
 number_of_players_min: 2,
 number_of_players_max: 4,
 category: 'Science Fiction',
 price: 2.30,
-user: marion,
+user: jennifer,
 description: "Quel méchant sommeille en vous ?
 
 Dans le jeu Villainous, vous entrez dans la peau de 6 célèbres Méchants de Disney : Maléfique, Jafar, Capitaine Crochet, Ursula, Prince Jean et la Reine de cœur ; et suivez votre propre objectif diabolique pour gagner le titre de pire méchant de tous les temps ! Pour y parvenir, utilisez astucieusement vos capacités spéciales et tentez de ruinez les plans de vos adversaires. Car ce n’est qu’en dictant avec succès vos règles aux héros de Disney que vous pourrez espérer une fin… malheureuse !
@@ -95,7 +111,7 @@ number_of_players_min: 2 ,
 number_of_players_max: 8,
 category: 'Card Game',
 price: 1.85,
-user: jennifer,
+user: nicolas,
 description: "Facile à apprendre, vous serez vite gagnés par la frénésie de UNO, le plus célèbre des jeux de cartes familiaux.
 
 Pour gagner, débarrassez-vous de toutes vos cartes en jouant une carte de la même couleur, du même numéro ou une carte Action !
@@ -220,3 +236,33 @@ unlock_game.save
 
 
 puts "Games created !"
+
+puts "Creating review !"
+
+Review.create!(
+  comment: "J'adore jouer à Catan, c'est un jeu fantastique!",
+  rating: 5.0,
+  user: nicolas,
+  game: catan_game
+)
+
+Review.create!(
+  comment: "Le jeu est niquel ! mais avec toutes les pièces dans la boite ça irait mieux....... Je recommande pas.",
+  rating: 1.0,
+  user: nicolas,
+  game: catan_game
+)
+
+Review.create!(
+  comment: "Uno c'est incroyable, encore plus quand tu le transformes en jeu d'apéro 🤣",
+  rating: 5.0,
+  user: jennifer,
+  game: uno_game
+)
+
+Review.create!(
+  comment: "C'est pas le meilleur jeu, mais ça se joue correctement, on se lasse assez vite",
+  rating: 5.0,
+  user: marion,
+  game: vilainous_game
+)
