@@ -9,7 +9,7 @@
     <div class="details-text">Rent <%=  @game.name %> for <%= @game.price %>€ per day 😍<br></div>
     <div class="details-text">Category: <%= @game.category %><br></div>
     <p class="detail">
-      <%= image_tag('number_player', alt: 'Logo', size: "50x50") %>
+      <%= image_tag('number_player.jpg', alt: 'Logo', size: "50x50") %>
       <%= "#{@game.number_of_players_min} - #{@game.number_of_players_max}" %>
     </p>
     <% if @game.user === current_user %>
