@@ -17,7 +17,8 @@ Rails.application.routes.draw do
   # root "posts#index"
   resources :games do
     resources :bookings, only: [:create]
-    resources :reviews, only: [:create]
+    # resources :reviews, only: [:create]
+    resources :reviews, shallow: true
   end
 
   get "my_games", to: "games#my_index"
