@@ -46,7 +46,7 @@
   justify-content: space-between;
   align-items: flex-end;
   position: relative;
-  background-color: #e2efee;
+  background-color: rgb(238, 243, 245);
 
 }
 
@@ -76,4 +76,12 @@
 
 .card-booking .text-accepted {
   font-size: 10px;
+}
+
+.card-form {
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 10px;
+  padding: 40px;
+  width: 600px;
 }

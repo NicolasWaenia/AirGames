@@ -31,13 +31,19 @@
       <span> · <%= @game.reviews.count %> reviews</span>
 
 <%# previous comments %>
-  <div class="review-card">
-    <% @game.reviews.reverse.each do |review| %>
-        <strong><%= review.user.first_name %>:</strong>
-        <span id="ago"><%= time_ago = time_ago_in_words(review.updated_at) + " ago" %></span>
-        <p><%= review.comment %></p>
-        <div class="rating"><%= review.rating %></div>
-    <% end %>
-  </div>
+<div class="review-card">
+  <% @game.reviews.reverse.each do |review| %>
+    <strong><%= review.user.first_name %>:</strong>
+    <span id="ago"><%= time_ago = time_ago_in_words(review.updated_at) + " ago" %></span>
+    <p><%= review.comment %></p>
+    <div class="rating">
+      <% (1..5).each do |star| %>
+        <% filled_star_class = star <= review.rating ? 'fas' : 'far' %>
+        <i class="<%= filled_star_class %> fa-star"></i>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
 
 </div>

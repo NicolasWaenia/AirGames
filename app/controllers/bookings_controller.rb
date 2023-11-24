@@ -5,10 +5,13 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     @booking.status = "pending"
     @booking.game = @game
-    @booking.total_price = ((@booking.end_at - @booking.start_at)/(60 * 60 * 24) + 1).floor() * @booking.game.price
+    if @booking.end_at && @booking.start_at
+      @booking.total_price = ((@booking.end_at - @booking.start_at)/(60 * 60 * 24) + 1).floor * @booking.game.price
+    end
     if @booking.save
       redirect_to my_bookings_path
     else
+      @review = Review.new
       render "games/show", status: :unprocessable_entity
     end
   end

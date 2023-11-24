@@ -1,12 +1,15 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon mb-5 fixed-navbar">
   <div class="container-fluid">
-  <%= link_to games_path, class: "fa-solid fa-chess-queen" do %>
-    <i></i>
-  <% end %>
 
-    <%= link_to games_path, class: "navbar-brand" do %>
-    <span class="fs-1 " id= "airgames-title">AirGames</span>
+  <div class="logo-title">
+    <%= link_to games_path, class: "fa-solid fa-fire-flame-curved" do %>
+      <i></i>
     <% end %>
+
+      <%= link_to games_path, class: "navbar-brand" do %>
+      <span class="fs-1 " id= "airgames-title">AirGames</span>
+      <% end %>
+  </div>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

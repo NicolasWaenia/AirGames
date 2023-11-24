@@ -4,23 +4,27 @@
 
 <div class="row row-cols-1 row-cols-md-2 g-4">
   <% @bookings.each do |booking| %>
-    <div class="col">
+    <div class="col" ">
       <%= link_to game_path(booking.game), class: "text-decoration-none text-dark" do %>
-        <div class="card h-100">
+        <div class="card h-100" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); border-radius: 8px; overflow: hidden;">
           <div class="row g-0">
             <% if booking.game.photo.attached? %>
-              <div class="col-md-4">
-                <img src="<%= cl_image_path(booking.game.photo.key, crop: :fill, gravity: :center) %>" alt="Game Image" class="img-fluid rounded w-100 h-100">
+              <div class="col-md-4" style="background-color: white; ; display: flex; justify-content: center; align-items: center; border-radius: 8px;" >
+                <img src="<%= cl_image_path(booking.game.photo.key, crop: :fill, gravity: :center) %>" alt="Game Image" class="img-fluid rounded w-80 h-80" style="border-radius: 8px;">
               </div>
             <% end %>
             <div class="col-md-8">
               <div class="card-body">
-                <h1 class="card-title text-center mb-3"><%= booking.game.name %></h1>
-                <h3 class="card-subtitle mb-2">Category: <%= booking.game.category %></h3>
+              <div class="title-booking-card" style= "display: flex; justify-content: center; align-items: center;">
+                <h4 class="card-title text-center mb-3"><%= booking.game.name %> | from <%= booking.game.user.first_name %></h4>
+                <%= cl_image_tag booking.game.user.profile_picture.key, height: 70 , width: 70, crop: :fill, style: "border-radius: 50%; padding: 10px; margin-top: -20px;"%>
+              </div>
+                <h5 class="card-subtitle mb-2">Category: <%= booking.game.category %></h5>
                 <p class="card-text mb-3"> Total price: <%= number_with_precision(booking.total_price, precision: 2) %>€</p>
 
                 <p class="card-text mb-3">
                   <small class="text-muted">
+                    Booking from <%= booking.start_at.strftime("%d/%m/%Y") %> to <%= booking.end_at.strftime("%d/%m/%Y") %>
                     Booking from <%= booking.start_at.strftime("%d/%m/%Y") %> to <%= booking.end_at.strftime("%d/%m/%Y") %>
                   </small>
                 </p>

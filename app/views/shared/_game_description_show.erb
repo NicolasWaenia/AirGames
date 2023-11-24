@@ -20,10 +20,10 @@
       <%# <%= link_to "Edit my game", edit_game_path, class:"edit-btn" %>
       <%# <%= link_to "Delete my announce", game_path(@game), data: { turbo_method: :delete, turbo_confirm: "Are your sure?" }, class:"delete-btn" %>
       <%= link_to edit_game_path do %>
-        <i class="fas fa-edit text-dark"></i>
+        <i class="fas fa-edit text-dark edit-btn edit-icon"></i>
       <% end %>
-      <%= link_to game_path(@game), method: :delete, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "position-absolute top-0 end-0 ms-2" do %>
-        <i class="fas fa-trash text-danger"></i>
+      <%= link_to game_path(@game), method: :delete, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+        <i class="fas fa-trash text-danger delete-btn"></i>
       <% end %>
     </div>
 
@@ -41,7 +41,7 @@
       <% if @game.user === current_user %>
         <i id="diamond" class="fa-solid fa-diamond"></i>
 
-        <span id="description-title">Next bookings </span><br><br>
+        <span class="description-title">Next bookings </span>
 
         <% bookings = @game.bookings.where(status: ["pending", "accepted"]).where("start_at >= ?", Time.now.midnight).order(:created_at) %>
         <% if bookings.any? %>
@@ -53,7 +53,7 @@
         <% end %>
       <% else %>
         <i id="diamond" class="fa-solid fa-diamond"></i>
-        <span id="description-title">Booking :</span><br><br>
+        <span class="description-title">Booking :</span><br><br>
         <div data-controller="dynamic-booking-price" data-dynamic-booking-price-price-value="<%= @game.price %>">
             <%= simple_form_for [@game, @booking],
                         html: { data: { controller: "datepicker" } } do |f| %>
@@ -70,7 +70,7 @@
                       dynamic_booking_price_target: "endTime" } } %>
               <%= f.submit 'Ask for booking', class: 'submit-btn' %>
             <% end %>
-              <p data-dynamic-booking-price-target="priceHolder"></p>
+              <p data-dynamic-booking-price-target="priceHolder" class="mt-4"></p>
           </div>
       <% end %>
     </div>
