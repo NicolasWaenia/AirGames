@@ -15,16 +15,18 @@
     </p>
 
     <% if @game.user === current_user %>
+
     <div class="btns">
       <%# <%= link_to "Edit my game", edit_game_path, class:"edit-btn" %>
       <%# <%= link_to "Delete my announce", game_path(@game), data: { turbo_method: :delete, turbo_confirm: "Are your sure?" }, class:"delete-btn" %>
-      <%= link_to edit_game_path, class: "position-absolute top-0 end-0" do %>
+      <%= link_to edit_game_path do %>
         <i class="fas fa-edit text-dark"></i>
       <% end %>
       <%= link_to game_path(@game), method: :delete, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "position-absolute top-0 end-0 ms-2" do %>
         <i class="fas fa-trash text-danger"></i>
       <% end %>
     </div>
+
     <% end %>
   </div>
 </div>
