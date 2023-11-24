@@ -1,31 +1,33 @@
+<div class="row">
+  <% @games.each do |game| %>
+    <div class="col-md-4 mb-4">
+      <%= link_to(game_path(game), class: "card-trip") do %>
+        <div class="card-trip">
+          <% if game.photo.attached? %>
+            <%= cl_image_tag game.photo.key, class: "card-image mt-2 img-fluid", crop: :fill %>
+          <% else %>
+            <%= image_tag "des.jpg", class: "card-image mt-2 img-fluid", alt: "Default Game Image" %>
+          <% end %>
 
-  <div class="row">
-    <% @games.each do |game| %>
-      <div class="col-md-4 mb-4">
-        <%= link_to(game_path(game), class: "card-trip") do %>
-          <div class="card-trip">
-            <% if game.photo.attached? %>
-              <%= cl_image_tag game.photo.key, class: "card-image mt-2 img-fluid", crop: :fill %>
-            <% else %>
-              <%= image_tag "des.jpg", class: "card-image mt-2 img-fluid", alt: "Default Game Image" %>
-            <% end %>
-
-            <div class="card-trip-infos border-top pt-3">
-              <% if game.user === current_user %>
-                <% bookings_count = game.bookings.where(status: "pending").where("start_at >= ?", Time.now.midnight).count %>
-                <% if bookings_count > 0 %>
-                  <span class="booking-infos"><%= pluralize(bookings_count, 'pending booking') %></span>
-                <% end %>
+          <div class="card-trip-infos border-top pt-3">
+            <% if game.user === current_user %>
+              <% bookings_count = game.bookings.where(status: "pending").where("start_at >= ?", Time.now.midnight).count %>
+              <% if bookings_count > 0 %>
+                <span class="booking-infos"><%= pluralize(bookings_count, 'pending booking') %></span>
               <% end %>
-              <div>
-                <h2><%= game.name %></h2>
-                <p class="detail">Category: <%= game.category %></p>
-                <p class="detail"> <%= "From #{game.number_of_players_min} to #{game.number_of_players_max}" %> Players</p>
-              </div>
-              <h2 class="card-trip-pricing text-right"><%= game.price %>€ per day</h2>
+            <% end %>
+            <div>
+              <h2><%= game.name %></h2>
+              <p class="detail">Category: <%= game.category %></p>
+              <p class="detail">
+              <i class="fas fa-users" aria-hidden="true"></i>
+              <%= "#{game.number_of_players_min} - #{game.number_of_players_max}" %>
+              </p>
             </div>
+            <h2 class="card-trip-pricing text-right"><%= game.price %>€ per day</h2>
           </div>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>

@@ -17,7 +17,7 @@
               <div class="card-body">
                 <h1 class="card-title text-center mb-3"><%= booking.game.name %></h1>
                 <h3 class="card-subtitle mb-2">Category: <%= booking.game.category %></h3>
-                <p class="card-text mb-3">Price: <%= number_with_precision(booking.game.price, precision: 2) %>€ per day</p>
+                <p class="card-text mb-3"> Total price: <%= number_with_precision(booking.total_price, precision: 2) %>€</p>
 
                 <p class="card-text mb-3">
                   <small class="text-muted">

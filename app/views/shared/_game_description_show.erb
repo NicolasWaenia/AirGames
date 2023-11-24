@@ -8,18 +8,12 @@
     <span id="title">🃏 <%=  @game.name.upcase %> | <%= @game.user.first_name %> à <%= @game.user.city %> </span><br>
     <div class="details-text">Rent <%=  @game.name %> for <%= @game.price %>€ per day 😍<br></div>
     <div class="details-text">Category: <%= @game.category %><br></div>
-    <div class="details-text">Minimum Players:
-      <% @game.number_of_players_min.times do %>
 
-      <% end %>
-    </div>
-    <div class="details-text">Maximum Players:
-      <% @game.number_of_players_max.times do %>
-        <span class="fa-stack">
-          <i class="fas fa-user fa-stack-1x"></i>
-        </span>
-      <% end %>
-    </div>
+    <p class="detail">
+    <i class="fas fa-users" aria-hidden="true"></i>
+      <%= "#{@game.number_of_players_min} - #{@game.number_of_players_max}" %>
+    </p>
+
     <% if @game.user === current_user %>
     <div class="btns">
       <%# <%= link_to "Edit my game", edit_game_path, class:"edit-btn" %>
@@ -38,17 +32,23 @@
   <div class="row justify-content-between">
     <div class="col-8 pe-5 border-end">
       <i id="diamond" class="fa-solid fa-diamond"></i>
-      <span id="description-title">Description</span><br>
-      <div id="text"><%=  @game.description %></div>
+      <span class="description-title">Description</span><br>
+      <div class="text"><%=  @game.description %></div>
     </div>
     <div class="col-4 px-5">
       <% if @game.user === current_user %>
         <i id="diamond" class="fa-solid fa-diamond"></i>
+
         <span id="description-title">Next bookings </span><br><br>
+
         <% bookings = @game.bookings.where(status: ["pending", "accepted"]).where("start_at >= ?", Time.now.midnight).order(:created_at) %>
-        <% bookings.each do |booking| %>
-        <%= render "shared/bookings", booking: booking %>
-      <% end %>
+        <% if bookings.any? %>
+          <% bookings.each do |booking| %>
+            <%= render "shared/bookings", booking: booking %>
+          <% end %>
+        <% else %>
+          <div class="text">No bookings soon 😞</div>
+        <% end %>
       <% else %>
         <i id="diamond" class="fa-solid fa-diamond"></i>
         <span id="description-title">Booking :</span><br><br>

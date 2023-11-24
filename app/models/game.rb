@@ -4,10 +4,12 @@ class Game < ApplicationRecord
   has_many :bookings
   has_many :reviews
 
-  validates :number_of_players_min, inclusion: { in: 1..6 }
-  validates :number_of_players_max, inclusion: { in: 1..16 }
-  validates :category, inclusion: ["Card Game", "Adventure", "Farming", "Music", "Party Game", "Science Fiction", "Negotiation", "Children's Game", "Action/Dexterity", "Bluffing", "Murder/Mystery"]
-  validates :price, numericality: { greater_than_or_equal_to: 0.5 }
+  validates :name, presence: true
+  validates :description, presence: true
+  validates :number_of_players_min, presence: true, inclusion: { in: 1..6 }
+  validates :number_of_players_max, presence: true, inclusion: { in: 1..16 }
+  validates :category, presence: true, inclusion: ["Card Game", "Adventure", "Farming", "Music", "Party Game", "Science Fiction", "Negotiation", "Children's Game", "Action/Dexterity", "Bluffing", "Murder/Mystery"]
+  validates :price, presence: true, numericality: { greater_than_or_equal_to: 0.5 }
 
   def average_rating
     if reviews.exists?

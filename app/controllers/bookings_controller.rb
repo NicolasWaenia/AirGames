@@ -5,6 +5,7 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     @booking.status = "pending"
     @booking.game = @game
+    @booking.total_price = ((@booking.end_at - @booking.start_at)/(60 * 60 * 24) + 1).floor() * @booking.game.price
     if @booking.save
       redirect_to my_bookings_path
     else
@@ -37,6 +38,6 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:start_at, :end_at, :status, :user_id, :game_id)
+    params.require(:booking).permit(:start_at, :end_at)
   end
 end

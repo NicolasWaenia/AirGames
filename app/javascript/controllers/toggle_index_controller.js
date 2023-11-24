@@ -8,15 +8,6 @@ export default class extends Controller {
 
 
   connect() {
-
-console.log("coucou")
-
-console.log(this.mapTarget)
-
-console.log(this.listTarget)
-
-
-
   }
 
 //   toggleView() {

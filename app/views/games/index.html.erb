@@ -6,10 +6,24 @@
             class: "form-control",
             placeholder: "Type a keyword"
         %>
+
       <%= submit_tag "Search", name: "", class: "submit-btn" %>
+
+    <% end %>
+
+    <% if params[:query].present? %>
+      <% if @games.present? %>
+        <p><%= pluralize(@games.size, 'result') %> found:</p>
+        <% @games.each do |game| %>
+        <% end %>
+      <% else %>
+        <p>No results found</p>
+      <% end %>
+
     <% end %>
   </div>
 </div>
+
 
 <div data-controller="toggle">
 <div class="toggle-map-or-list-btn">
