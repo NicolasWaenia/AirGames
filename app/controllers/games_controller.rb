@@ -24,6 +24,18 @@ class GamesController < ApplicationController
   def my_index
     if current_user
       @games = current_user.games
+      # query = <<-SQL
+      #   SELECT g1.*
+      #   FROM games g1
+      #   INNER JOIN (SELECT g.id, SUM(case when b.status = ? then 1 else 0 end) AS nb_pending
+      #         FROM games g
+      #         LEFT JOIN bookings b
+      #         ON g.id = b.game_id
+      #         GROUP BY g.id) b1
+      #   ON g1.id = b1.id
+      #   ORDER BY nb_pending DESC
+      # SQL
+      # @games = db.execute(query, "pending")
     else
       redirect_to root_path, alert: 'You need to be logged in to view your games.'
     end
